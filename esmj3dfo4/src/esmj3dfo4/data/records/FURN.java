@@ -102,6 +102,14 @@ public class FURN extends RECO
 			else if (sr.getType().equals("DSTF"))
 			{
 			}
+			else if (sr.getType().equals("SNAM"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("PTRN"))
+			{
+				// new
+			}
 			else
 			{
 				System.out.println("unhandled : " + sr.getType() + " in record " + recordData + " in " + this);

@@ -27,17 +27,14 @@ public class BOOK extends RECO
 
 	/*
 	 * DATA Subrecord
-	
-	This subrecord is always 10 bytes long (confirmed) and holds the book data.
-	Name 	Type/Size 	Info
-	Flags 	1 (byte) 	Book flags
-	
-	    0x0001 = Scroll 
-	    0x0002 = Can't be taken 
-	
-	Teaches 	1 (byte) 	Which skill the book teaches. See TES4Mod:Skill Indices for details. Set to 0xFF if no skill is taught.
-	Value 	4 (word) 	Book value
-	Weight 	4 (float) 	Book weight
+	 * 
+	 * This subrecord is always 10 bytes long (confirmed) and holds the book data. Name Type/Size Info Flags 1 (byte)
+	 * Book flags
+	 * 
+	 * 0x0001 = Scroll 0x0002 = Can't be taken
+	 * 
+	 * Teaches 1 (byte) Which skill the book teaches. See TES4Mod:Skill Indices for details. Set to 0xFF if no skill is
+	 * taught. Value 4 (word) Book value Weight 4 (float) Book weight
 	 */
 	public BOOK(Record recordData)
 	{
@@ -109,6 +106,14 @@ public class BOOK extends RECO
 			else if (sr.getType().equals("VMAD"))
 			{
 
+			}
+			else if (sr.getType().equals("DNAM"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("PTRN"))
+			{
+				// new
 			}
 			else
 			{

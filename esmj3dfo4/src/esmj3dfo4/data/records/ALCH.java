@@ -72,7 +72,7 @@ public class ALCH extends RECO
 			}
 			else if (sr.getType().equals("KWDA"))
 			{
-				//keywords
+				// keywords
 			}
 			else if (sr.getType().equals("YNAM"))
 			{
@@ -85,6 +85,18 @@ public class ALCH extends RECO
 			else if (sr.getType().equals("CTDA"))
 			{
 
+			}
+			else if (sr.getType().equals("DESC"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("DNAM"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("PTRN"))
+			{
+				// new
 			}
 			else
 			{

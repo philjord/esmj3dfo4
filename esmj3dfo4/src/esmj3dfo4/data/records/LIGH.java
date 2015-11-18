@@ -15,18 +15,11 @@ import esmmanager.common.data.record.Subrecord;
 public class LIGH extends CommonLIGH
 {
 	/*
-	 Light flags:
-
-	 0x00000001 = Dynamic
-	 0x00000002 = Can be Carried
-	 0x00000004 = Negative
-	 0x00000008 = Flicker
-	 0x00000020 = Off By Default
-	 0x00000040 = Flicker Slow
-	 0x00000080 = Pulse
-	 0x00000100 = Pulse Slow
-	 0x00000200 = Spot Light
-	 0x00000400 = Spot Shadow 
+	 * Light flags:
+	 * 
+	 * 0x00000001 = Dynamic 0x00000002 = Can be Carried 0x00000004 = Negative 0x00000008 = Flicker 0x00000020 = Off By
+	 * Default 0x00000040 = Flicker Slow 0x00000080 = Pulse 0x00000100 = Pulse Slow 0x00000200 = Spot Light 0x00000400 =
+	 * Spot Shadow
 	 */
 	public ZString EDID = null;
 
@@ -68,13 +61,12 @@ public class LIGH extends CommonLIGH
 
 				fieldOfView = ESMByteConvert.extractFloat(bs, 20);
 
-				/*	System.out.println("EDID " + EDID.editorId);
-				 System.out.println("radius " + radius);
-				 System.out.println("color " + color);
-				 System.out.println("falloffExponent " + falloffExponent);
-				 System.out.println("fieldOfView " + fieldOfView);
-
-				 System.out.println("flags " + ((flags & 0x00000200) != 0));
+				/*
+				 * System.out.println("EDID " + EDID.editorId); System.out.println("radius " + radius);
+				 * System.out.println("color " + color); System.out.println("falloffExponent " + falloffExponent);
+				 * System.out.println("fieldOfView " + fieldOfView);
+				 * 
+				 * System.out.println("flags " + ((flags & 0x00000200) != 0));
 				 */
 			}
 
@@ -90,7 +82,7 @@ public class LIGH extends CommonLIGH
 			else if (sr.getType().equals("FNAM"))
 			{
 				fade = ESMByteConvert.extractFloat(bs, 0);
-				//			System.out.println("FNAM " + fade);
+				// System.out.println("FNAM " + fade);
 			}
 			else if (sr.getType().equals("SNAM"))
 			{
@@ -99,6 +91,10 @@ public class LIGH extends CommonLIGH
 			else if (sr.getType().equals("OBND"))
 			{
 
+			}
+			else if (sr.getType().equals("NAM0"))
+			{
+				// new
 			}
 			else
 			{

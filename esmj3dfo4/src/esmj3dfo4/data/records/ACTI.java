@@ -96,6 +96,18 @@ public class ACTI extends RECO
 			else if (sr.getType().equals("SNAM"))
 			{
 			}
+			else if (sr.getType().equals("PRPS"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("RADR"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("PTRN"))
+			{
+				// new
+			}
 			else
 			{
 				System.out.println("unhandled : " + sr.getType() + " in record " + recordData + " in " + this);

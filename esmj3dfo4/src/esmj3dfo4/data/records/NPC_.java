@@ -343,6 +343,16 @@ public class NPC_ extends RECO
 			{
 
 			}
+			
+			else if (sr.getType().equals("FMRI"))
+			{
+
+			}
+			else if (sr.getType().equals("FMRS"))
+			{
+
+			}
+			
 
 			else
 			{

@@ -177,8 +177,7 @@ public class J3dREFRFactory
 			//TODO: this is not teh marker flag, need to work it out
 			if (stat.MODL != null && (!stat.isFlagSet(RECO.IsMarker_Flag) || BethRenderSettings.isShowEditorMarkers()))
 			{
-				// TODO: this stuff appears to refer to war like stuff enabled scenes
-				// but I still see capapults!
+				// TODO: see skyrim
 				//if (refr.XESP != null)
 				{
 					//System.out.println("parent spotting " + refr.XESP.parentId);
@@ -275,7 +274,8 @@ public class J3dREFRFactory
 		else if (baseRecord.getRecordType().equals("MSTT"))
 		{
 			MSTT mstt = new MSTT(baseRecord);
-			return makeJ3dRECODynInst(refr, mstt, mstt.MODL, makePhys, mediaSources);
+			//TODO: MSTT are too "misty" for now removed, MSTT records contain information on movable static objects.
+			//return makeJ3dRECODynInst(refr, mstt, mstt.MODL, makePhys, mediaSources);
 		}
 		else if (baseRecord.getRecordType().equals("TACT"))
 		{

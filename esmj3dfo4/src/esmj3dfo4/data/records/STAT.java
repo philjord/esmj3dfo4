@@ -23,13 +23,13 @@ public class STAT extends RECO
 
 	public MODS MODS;
 
-	public String lodModel1 = null;//high detail
+	public String lodModel1 = null;// high detail
 
 	public String lodModel2 = null;
 
 	public String lodModel3 = null;
 
-	public String lodModel4 = null;//low detail
+	public String lodModel4 = null;// low detail
 
 	public STAT(Record recordData)
 	{
@@ -65,11 +65,23 @@ public class STAT extends RECO
 			{
 
 			}
+			else if (sr.getType().equals("FULL"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("PRPS"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("PTRN"))
+			{
+				// new
+			}
 			else if (sr.getType().equals("MNAM"))
 			{
 				if (bs.length >= 1040)
 				{
-					//Has Distance LOD = RECO.VisibleWhenDistant_Flag from flags1
+					// Has Distance LOD = RECO.VisibleWhenDistant_Flag from flags1
 					lodModel1 = new String(bs, 0, 260).split("\0", 2)[0];
 					lodModel2 = new String(bs, 260, 260).split("\0", 2)[0];
 					lodModel3 = new String(bs, 520, 260).split("\0", 2)[0];

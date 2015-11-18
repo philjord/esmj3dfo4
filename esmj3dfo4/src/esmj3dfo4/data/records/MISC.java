@@ -123,6 +123,18 @@ public class MISC extends RECO
 			{
 				DATA = new DATA(bs);
 			}
+			else if (sr.getType().equals("CVPA"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("PTRN"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("CDIX"))
+			{
+				// new
+			}
 			else
 			{
 				System.out.println("unhandled : " + sr.getType() + " in record " + recordData + " in " + this);
