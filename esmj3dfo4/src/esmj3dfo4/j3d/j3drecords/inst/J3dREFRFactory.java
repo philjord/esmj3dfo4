@@ -2,7 +2,7 @@ package esmj3dfo4.j3d.j3drecords.inst;
 
 import javax.media.j3d.Node;
 
-import utils.source.MediaSources;
+import esmj3d.data.shared.records.CommonREFR;
 import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.j3d.BethRenderSettings;
@@ -38,9 +38,9 @@ import esmj3dfo4.data.records.LIGH;
 import esmj3dfo4.data.records.LVLI;
 import esmj3dfo4.data.records.LVLN;
 import esmj3dfo4.data.records.MISC;
-import esmj3dfo4.data.records.MSTT;
 import esmj3dfo4.data.records.NPC_;
 import esmj3dfo4.data.records.REFR;
+import esmj3dfo4.data.records.SCOL;
 import esmj3dfo4.data.records.SOUN;
 import esmj3dfo4.data.records.STAT;
 import esmj3dfo4.data.records.TACT;
@@ -51,6 +51,7 @@ import esmj3dfo4.j3d.j3drecords.type.J3dNPC_;
 import esmj3dfo4.j3d.j3drecords.type.J3dSTAT;
 import esmmanager.common.data.record.IRecordStore;
 import esmmanager.common.data.record.Record;
+import utils.source.MediaSources;
 
 public class J3dREFRFactory
 {
@@ -71,6 +72,7 @@ public class J3dREFRFactory
 			return null;
 		}
 	}
+
 	private static J3dRECOStatInst makeJ3dRECOActionInst(REFR refr, RECO reco, MODL modl, boolean makePhys, MediaSources mediaSources)
 	{
 		if (modl != null)
@@ -107,14 +109,17 @@ public class J3dREFRFactory
 
 	public static Node makeJ3DReferFar(REFR refr, IRecordStore master, MediaSources mediaSources)
 	{
+		// does a parent enablage flag exists, and is is defaulted to off?
+		if (refr.xesp != null && CommonREFR.getParentEnable(refr, master) != BethRenderSettings.isFlipParentEnableDefault())
+			return null;
+
 		Record baseRecord = master.getRecord(refr.NAME.formId);
 
 		if (baseRecord.getRecordType().equals("STAT"))
 		{
 			STAT stat = new STAT(baseRecord);
 
-			if (stat.isFlagSet(RECO.VisibleWhenDistant_Flag)
-					&& (!stat.isFlagSet(RECO.IsMarker_Flag) || BethRenderSettings.isShowEditorMarkers()))
+			if (stat.isFlagSet(RECO.VisibleWhenDistant_Flag) && (!stat.isFlagSet(RECO.IsMarker_Flag) || BethRenderSettings.isShowEditorMarkers()))
 			{
 				J3dRECOStatInst j3dinst = new J3dRECOStatInst(refr, false, false);
 				//find the lowest model for fun
@@ -151,6 +156,15 @@ public class J3dREFRFactory
 				return null;
 			}
 		}
+		else if (baseRecord.getRecordType().equals("SCOL"))
+		{
+			//TODO: do scols now act like stats?
+			//SCOL are just exactly like STATS
+			SCOL scol = new SCOL(baseRecord);
+			J3dRECOStatInst j3dinst = new J3dRECOStatInst(refr, false, false);
+			j3dinst.addNodeChild(new J3dRECOTypeStatic(scol, scol.MODL.model.str, false, mediaSources));
+			return j3dinst;
+		}
 		else if (baseRecord.getRecordType().equals("TREE"))
 		{
 			TREE tree = new TREE(baseRecord);
@@ -168,7 +182,9 @@ public class J3dREFRFactory
 
 	public static J3dRECOInst makeJ3DRefer(REFR refr, boolean makePhys, IRecordStore master, MediaSources mediaSources)
 	{
-
+		// does a parent enablage flag exists, and is is defaulted to off?
+		if (refr.xesp != null && CommonREFR.getParentEnable(refr, master) != BethRenderSettings.isFlipParentEnableDefault())
+			return null;
 		Record baseRecord = master.getRecord(refr.NAME.formId);
 
 		if (baseRecord.getRecordType().equals("STAT"))
@@ -177,29 +193,26 @@ public class J3dREFRFactory
 			//TODO: this is not teh marker flag, need to work it out
 			if (stat.MODL != null && (!stat.isFlagSet(RECO.IsMarker_Flag) || BethRenderSettings.isShowEditorMarkers()))
 			{
-				// TODO: see skyrim
-				//if (refr.XESP != null)
-				{
-					//System.out.println("parent spotting " + refr.XESP.parentId);
-					//System.out.println("parent spotting " + refr.XESP.flags);
-					//System.out.println("parent spotting " + stat.MODL.model.str);
-				}
-				//	else
-				{
-					//trivial system for markers
-					//if (!stat.MODL.model.str.contains("Marker") || BethRenderSettings.isShowEditorMarkers())
-					{
-						// fader handled by STAT
-						J3dRECOStatInst j3dinst = new J3dRECOStatInst(refr, false, makePhys);
-						J3dSTAT j3dSTAT = new J3dSTAT(stat, makePhys, mediaSources);
-						j3dinst.setJ3dRECOType(j3dSTAT);
-						return j3dinst;
-					}
-				}
+
+				// fader handled by STAT
+				J3dRECOStatInst j3dinst = new J3dRECOStatInst(refr, false, makePhys);
+				J3dSTAT j3dSTAT = new J3dSTAT(stat, makePhys, mediaSources);
+				j3dinst.setJ3dRECOType(j3dSTAT);
+				return j3dinst;
+
 			}
 
 			return null;
 
+		}
+		else if (baseRecord.getRecordType().equals("SCOL"))
+		{
+			//TODO: do scols now act like stats?
+			//SCOL are just exactly like STATS
+			SCOL scol = new SCOL(baseRecord);
+			J3dRECOStatInst j3dinst = new J3dRECOStatInst(refr, false, false);
+			j3dinst.addNodeChild(new J3dRECOTypeStatic(scol, scol.MODL.model.str, false, mediaSources));
+			return j3dinst;
 		}
 		else if (baseRecord.getRecordType().equals("ACTI"))
 		{
@@ -273,8 +286,10 @@ public class J3dREFRFactory
 		}
 		else if (baseRecord.getRecordType().equals("MSTT"))
 		{
-			MSTT mstt = new MSTT(baseRecord);
-			//TODO: MSTT are too "misty" for now removed, MSTT records contain information on movable static objects.
+			//TODO: MSTT are too "misty" for now removed, 
+			//MSTT records contain information on movable static objects.
+
+			//MSTT mstt = new MSTT(baseRecord);
 			//return makeJ3dRECODynInst(refr, mstt, mstt.MODL, makePhys, mediaSources);
 		}
 		else if (baseRecord.getRecordType().equals("TACT"))
@@ -334,6 +349,10 @@ public class J3dREFRFactory
 			{
 				return new J3dRECOStatInst(refr, new J3dSOUN(new SOUN(baseRecord), master, mediaSources.getSoundSource()), false, makePhys);
 			}
+		}
+		else if (baseRecord.getRecordType().equals("BNDS"))
+		{
+			//Bounds maybe?
 		}
 		else if (baseRecord.getRecordType().equals("LVLN"))
 		{

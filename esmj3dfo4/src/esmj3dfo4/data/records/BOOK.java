@@ -115,6 +115,10 @@ public class BOOK extends RECO
 			{
 				// new
 			}
+			else if (sr.getType().equals("ZNAM"))
+			{
+				//new
+			}
 			else
 			{
 				System.out.println("unhandled : " + sr.getType() + " in record " + recordData + " in " + this);
