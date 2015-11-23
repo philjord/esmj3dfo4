@@ -120,6 +120,33 @@ public class ARMO extends RECO
 
 			else if (sr.getType().equals("VMAD"))
 			{
+			}else if (sr.getType().equals("PTRN"))
+			{
+				// new
+			}else if (sr.getType().equals("OBTS"))
+			{
+				// new
+			}else if (sr.getType().equals("OBTE"))
+			{
+				// new
+			}else if (sr.getType().equals("INDX"))
+			{
+				// new
+			}else if (sr.getType().equals("APPR"))
+			{
+				// new
+			}else if (sr.getType().equals("STOP"))
+			{
+				// new
+			}else if (sr.getType().equals("BOD2"))
+			{
+				// new
+			}else if (sr.getType().equals("FNAM"))
+			{
+				// new
+			}else if (sr.getType().equals("INRD"))
+			{
+				// new
 			}
 			else
 			{

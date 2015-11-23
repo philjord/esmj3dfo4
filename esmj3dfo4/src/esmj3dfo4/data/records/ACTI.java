@@ -107,6 +107,18 @@ public class ACTI extends RECO
 			else if (sr.getType().equals("PTRN"))
 			{
 				// new
+			}else if (sr.getType().equals("CTDA"))
+			{
+				//new
+			}else if (sr.getType().equals("CITC"))
+			{
+				//new
+			}else if (sr.getType().equals("STCP"))
+			{
+				//new
+			}else if (sr.getType().equals("ATTX"))
+			{
+				//new
 			}
 			else
 			{

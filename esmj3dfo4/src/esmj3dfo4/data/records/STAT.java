@@ -65,18 +65,6 @@ public class STAT extends RECO
 			{
 
 			}
-			else if (sr.getType().equals("FULL"))
-			{
-				// new
-			}
-			else if (sr.getType().equals("PRPS"))
-			{
-				// new
-			}
-			else if (sr.getType().equals("PTRN"))
-			{
-				// new
-			}
 			else if (sr.getType().equals("MNAM"))
 			{
 				if (bs.length >= 1040)
@@ -92,6 +80,27 @@ public class STAT extends RECO
 					System.out.println("short MNAM in STAT ? " + new String(bs));
 				}
 			}
+			else if (sr.getType().equals("FULL"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("PRPS"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("PTRN"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("FTYP"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("MODC"))
+			{
+				// new
+			}
+
 			else
 			{
 				System.out.println("unhandled : " + sr.getType() + " in record " + recordData + " in " + this);

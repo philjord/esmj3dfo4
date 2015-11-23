@@ -109,6 +109,9 @@ public class FURN extends RECO
 			else if (sr.getType().equals("PTRN"))
 			{
 				// new
+			}else if (sr.getType().equals("PRPS"))
+			{
+				// new
 			}
 			else
 			{

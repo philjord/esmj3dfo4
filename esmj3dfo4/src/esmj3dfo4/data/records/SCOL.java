@@ -52,7 +52,13 @@ public class SCOL extends RECO
 			{
 				distantSTATs.get(distantSTATs.size() - 1).setData(bs);
 			}
-
+			else if (sr.getType().equals("FLTR"))
+			{
+				// new
+			}else if (sr.getType().equals("FULL"))
+			{
+				// new
+			}
 			else
 			{
 				System.out.println("unhandled : " + sr.getType() + " in record " + recordData + " in " + this);
@@ -61,7 +67,7 @@ public class SCOL extends RECO
 		}
 	}
 
-	private class DistantSTAT
+	public class DistantSTAT
 	{
 		public FormID statFormId = null;
 

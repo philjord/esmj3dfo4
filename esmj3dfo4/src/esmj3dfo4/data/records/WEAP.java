@@ -15,7 +15,9 @@ public class WEAP extends RECO
 
 	public FormID FULL;
 
-	public MODL MODL;;
+	public MODL MODL;
+	
+	public MODL MOD4; // female  
 
 	public WEAP(Record recordData)
 	{
@@ -51,6 +53,20 @@ public class WEAP extends RECO
 			{
 				MODL.addMODSSub(bs);
 			}
+			
+			else if (sr.getType().equals("MOD4"))
+			{
+				MOD4 = new MODL(bs);
+			}
+			else if (sr.getType().equals("MO4T"))
+			{
+				MOD4.addMODTSub(bs);
+			}
+			else if (sr.getType().equals("MO4S"))
+			{
+				MOD4.addMODSSub(bs);
+			}
+			
 			else if (sr.getType().equals("EITM"))
 			{
 
@@ -139,7 +155,19 @@ public class WEAP extends RECO
 			{
 
 			}
-
+			else if (sr.getType().equals("PTRN"))
+			{
+				// new
+			}else if (sr.getType().equals("OBTS"))
+			{
+				// new
+			}else if (sr.getType().equals("OBTE"))
+			{
+				// new
+			}else if (sr.getType().equals("OBTF"))
+			{
+				// new
+			}
 			else
 			{
 				System.out.println("unhandled : " + sr.getType() + " in record " + recordData + " in " + this);

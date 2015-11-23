@@ -103,6 +103,16 @@ public class ACHR extends InstRECO
 			else if (sr.getType().equals("XHOR"))
 			{
 			}
+			else if (sr.getType().equals("XLYR"))
+			{
+				//new
+			}else if (sr.getType().equals("XIS2"))
+			{
+				//new
+			}else if (sr.getType().equals("XLKT"))
+			{
+				//new
+			}			
 			else
 			{
 				System.out.println("unhandled : " + sr.getType() + " in record " + recordData + " in " + this);

@@ -286,7 +286,7 @@ public class J3dREFRFactory
 		}
 		else if (baseRecord.getRecordType().equals("MSTT"))
 		{
-			//TODO: MSTT are too "misty" for now removed, 
+			//FIXME: MSTT are too "misty" for now removed, 
 			//MSTT records contain information on movable static objects.
 
 			//MSTT mstt = new MSTT(baseRecord);
@@ -392,6 +392,7 @@ public class J3dREFRFactory
 	 */
 	protected static J3dRECOTypeCha makeLVLN(LVLN lvln, IRecordStore master, MediaSources mediaSources)
 	{
+		
 		// TODO: randomly picked for now
 		LVLO[] LVLOs = lvln.LVLOs;
 

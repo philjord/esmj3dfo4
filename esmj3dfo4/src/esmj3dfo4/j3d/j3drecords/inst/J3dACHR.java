@@ -13,6 +13,11 @@ public class J3dACHR extends J3dRECOChaInst
 	public J3dACHR(ACHR achr, IRecordStore master, MediaSources mediaSources)
 	{
 		super(achr);
+
+		//FIXME: CHAR turned off for FO4 for now
+		if (true)
+			return;
+
 		Record baseRecord = master.getRecord(achr.NAME.formId);
 		if (baseRecord.getRecordType().equals("NPC_"))
 		{
