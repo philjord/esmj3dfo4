@@ -23,7 +23,7 @@ import esmmanager.common.PluginException;
 import esmmanager.common.data.record.Record;
 import esmmanager.loader.ESMManager;
 
-public class Tes5esmanalyzer extends EsmFormatAnalyzer
+public class FO4esmanalyzer extends EsmFormatAnalyzer
 {
 	private static ESMManager esmManager;
 
@@ -45,8 +45,8 @@ public class Tes5esmanalyzer extends EsmFormatAnalyzer
 					if (j3dCellFactory.isWRLD(rec.getFormID()))
 					{
 						j3dCellFactory.makeBGWRLDPersistent(rec.getFormID(), false);
-						j3dCellFactory.makeBGWRLDTemporary(rec.getFormID(), false);
-						j3dCellFactory.makeBGWRLDDistant(rec.getFormID(), false);
+						j3dCellFactory.makeBGWRLDTemporary(rec.getFormID(), -1, false);
+						j3dCellFactory.makeBGWRLDDistant(rec.getFormID(), -1, false);
 					}
 					else
 					{

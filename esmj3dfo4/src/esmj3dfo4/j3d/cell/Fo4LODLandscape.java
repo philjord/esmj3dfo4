@@ -25,9 +25,9 @@ import utils.source.TextureSource;
 import esmj3d.j3d.cell.MorphingLandscape;
 import esmj3d.j3d.j3drecords.inst.J3dLAND;
 
-public class Tes5LODLandscape extends MorphingLandscape
+public class Fo4LODLandscape extends MorphingLandscape
 {
-	public Tes5LODLandscape(int lodX, int lodY, int scale, String worldFormName, MeshSource meshSource, TextureSource textureSource)
+	public Fo4LODLandscape(int lodX, int lodY, int scale, String worldFormName, MeshSource meshSource, TextureSource textureSource)
 	{
 		super(lodX, lodY, scale);
 		String meshName = "terrain\\" + worldFormName + "\\" + worldFormName + "." + scale + "." + lodX + "." + lodY + ".btr";
