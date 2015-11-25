@@ -87,6 +87,46 @@ public class FLOR extends RECO
 			{
 
 			}
+			else if (sr.getType().equals("PTRN"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("DEST"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("DSTD"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("DMDL"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("DMDT"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("DSTF"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("KSIZ"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("KWDA"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("PRPS"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("ATTX"))
+			{
+				// new
+			}
 			else
 			{
 				System.out.println("unhandled : " + sr.getType() + " in record " + recordData + " in " + this);

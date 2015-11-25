@@ -98,6 +98,10 @@ public class ALCH extends RECO
 			{
 				// new
 			}
+			else if (sr.getType().equals("CUSD"))
+			{
+				// new
+			}
 			else
 			{
 				System.out.println("unhandled : " + sr.getType() + " in record " + recordData + " in " + this);

@@ -87,7 +87,26 @@ public class AMMO extends RECO
 			{
 
 			}
-
+			else if (sr.getType().equals("PTRN"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("DNAM"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("ONAM"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("NAM1"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("NAM2"))
+			{
+				// new
+			}
 			else
 			{
 				System.out.println("unhandled : " + sr.getType() + " in record " + recordData + " in " + this);

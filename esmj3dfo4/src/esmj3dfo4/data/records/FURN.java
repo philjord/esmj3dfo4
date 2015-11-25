@@ -109,7 +109,28 @@ public class FURN extends RECO
 			else if (sr.getType().equals("PTRN"))
 			{
 				// new
-			}else if (sr.getType().equals("PRPS"))
+			}
+			else if (sr.getType().equals("PRPS"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("ATTX"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("OBTE"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("OBTS"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("STOP"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("COCT"))
 			{
 				// new
 			}

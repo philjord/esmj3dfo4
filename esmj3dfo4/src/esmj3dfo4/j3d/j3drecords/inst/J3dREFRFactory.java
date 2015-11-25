@@ -44,6 +44,7 @@ import esmj3dfo4.data.records.SCOL;
 import esmj3dfo4.data.records.SOUN;
 import esmj3dfo4.data.records.STAT;
 import esmj3dfo4.data.records.TACT;
+import esmj3dfo4.data.records.TERM;
 import esmj3dfo4.data.records.TREE;
 import esmj3dfo4.data.records.WEAP;
 import esmj3dfo4.data.subrecords.LVLO;
@@ -111,7 +112,10 @@ public class J3dREFRFactory
 	{
 		// does a parent enablage flag exists, and is is defaulted to off?
 		if (refr.xesp != null && CommonREFR.getParentEnable(refr, master) != BethRenderSettings.isFlipParentEnableDefault())
+		{
+			System.out.println("not showen due to xesp " + refr);
 			return null;
+		}
 
 		Record baseRecord = master.getRecord(refr.NAME.formId);
 
@@ -119,7 +123,8 @@ public class J3dREFRFactory
 		{
 			STAT stat = new STAT(baseRecord);
 
-			if (stat.isFlagSet(RECO.VisibleWhenDistant_Flag) && (!stat.isFlagSet(RECO.IsMarker_Flag) || BethRenderSettings.isShowEditorMarkers()))
+			if (stat.isFlagSet(RECO.VisibleWhenDistant_Flag)
+					&& (!stat.isFlagSet(RECO.IsMarker_Flag) || BethRenderSettings.isShowEditorMarkers()))
 			{
 				J3dRECOStatInst j3dinst = new J3dRECOStatInst(refr, false, false);
 				//find the lowest model for fun
@@ -297,6 +302,11 @@ public class J3dREFRFactory
 			TACT tact = new TACT(baseRecord);
 			return makeJ3dRECOActionInst(refr, tact, tact.MODL, makePhys, mediaSources);
 		}
+		else if (baseRecord.getRecordType().equals("TERM"))
+		{
+			TERM term = new TERM(baseRecord);
+			return makeJ3dRECOActionInst(refr, term, term.MODL, makePhys, mediaSources);
+		}
 		else if (baseRecord.getRecordType().equals("WEAP"))
 		{
 			WEAP weap = new WEAP(baseRecord);
@@ -392,7 +402,7 @@ public class J3dREFRFactory
 	 */
 	protected static J3dRECOTypeCha makeLVLN(LVLN lvln, IRecordStore master, MediaSources mediaSources)
 	{
-		
+
 		// TODO: randomly picked for now
 		LVLO[] LVLOs = lvln.LVLOs;
 

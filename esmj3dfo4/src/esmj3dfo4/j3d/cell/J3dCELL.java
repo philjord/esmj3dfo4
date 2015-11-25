@@ -75,7 +75,8 @@ public class J3dCELL extends J3dCELLGeneral implements UpdateListener
 		catch (NullPointerException e)
 		{
 			if (e.getStackTrace().length > 0)
-				System.out.println("J3dCELL " + cell.formId + " - null pointer making record " + record + " " + record.getRecordType() + " in " + e.getStackTrace()[0]);
+				System.out.println("J3dCELL " + cell.formId + " - null pointer making record " + record + " " + record.getRecordType()
+						+ " in " + e.getStackTrace()[0]);
 			else
 				System.out.println("J3dCELL " + cell.formId + " - null pointer making record " + record + " " + record.getRecordType());
 
@@ -116,19 +117,19 @@ public class J3dCELL extends J3dCELLGeneral implements UpdateListener
 				J3dLAND j3dLAND;
 				if (makePhys)
 				{
-					Record parentLANDrec = ((J3dCellFactory) master).getParentWRLDLAND(worldId, (int) instCell.getTrans().x, (int) instCell.getTrans().y);
-					if (parentLANDrec != null)
-						j3dLAND = new J3dLAND(new LAND(parentLANDrec));
-					else
-						j3dLAND = new J3dLAND(new LAND(record));
+					/*	Record parentLANDrec = ((J3dCellFactory) master).getParentWRLDLAND(worldId, (int) instCell.getTrans().x, (int) instCell.getTrans().y);
+						if (parentLANDrec != null)
+							j3dLAND = new J3dLAND(new LAND(parentLANDrec));
+						else*/
+					j3dLAND = new J3dLAND(new LAND(record));
 				}
 				else
 				{
-					Record parentLANDrec = ((J3dCellFactory) master).getParentWRLDLAND(worldId, (int) instCell.getTrans().x, (int) instCell.getTrans().y);
+					/*Record parentLANDrec = ((J3dCellFactory) master).getParentWRLDLAND(worldId, (int) instCell.getTrans().x, (int) instCell.getTrans().y);
 					if (parentLANDrec != null)
 						j3dLAND = new J3dLAND(new LAND(parentLANDrec), master, mediaSources.getTextureSource());
-					else
-						j3dLAND = new J3dLAND(new LAND(record), master, mediaSources.getTextureSource());
+					else*/
+					j3dLAND = new J3dLAND(new LAND(record), master, mediaSources.getTextureSource());
 				}
 
 				j3dLAND.setLocation(cellLocation);
@@ -150,7 +151,8 @@ public class J3dCELL extends J3dCELLGeneral implements UpdateListener
 		catch (NullPointerException e)
 		{
 			if (e.getStackTrace().length > 0)
-				System.out.println("J3dCELL " + cell.formId + " - null pointer making record " + record + " " + record.getRecordType() + " in " + e.getStackTrace()[0]);
+				System.out.println("J3dCELL " + cell.formId + " - null pointer making record " + record + " " + record.getRecordType()
+						+ " in " + e.getStackTrace()[0]);
 			else
 				System.out.println("J3dCELL " + cell.formId + " - null pointer making record " + record + " " + record.getRecordType());
 

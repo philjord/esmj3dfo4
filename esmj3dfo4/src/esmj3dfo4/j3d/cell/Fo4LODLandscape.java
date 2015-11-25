@@ -8,22 +8,21 @@ import javax.media.j3d.TransformGroup;
 import javax.vecmath.Quat4f;
 import javax.vecmath.Vector3f;
 
+import esmj3d.j3d.cell.MorphingLandscape;
+import esmj3d.j3d.j3drecords.inst.J3dLAND;
 import nif.NiObjectList;
 import nif.NifFile;
 import nif.NifToJ3d;
 import nif.basic.NifRef;
-import nif.j3d.J3dNiTriShape;
+import nif.j3d.J3dBSTriShape;
 import nif.niobject.NiAVObject;
 import nif.niobject.NiObject;
-import nif.niobject.NiTriShape;
-import nif.niobject.NiTriShapeData;
 import nif.niobject.bs.BSLightingShaderProperty;
 import nif.niobject.bs.BSMultiBoundNode;
 import nif.niobject.bs.BSShaderTextureSet;
+import nif.niobject.bs.BSTriShape;
 import utils.source.MeshSource;
 import utils.source.TextureSource;
-import esmj3d.j3d.cell.MorphingLandscape;
-import esmj3d.j3d.j3drecords.inst.J3dLAND;
 
 public class Fo4LODLandscape extends MorphingLandscape
 {
@@ -42,23 +41,22 @@ public class Fo4LODLandscape extends MorphingLandscape
 				BSMultiBoundNode root = (BSMultiBoundNode) blocks.root();
 
 				TransformGroup tg = new TransformGroup();
-				Transform3D t = new Transform3D(new Quat4f(0, 0, 0, 1), new Vector3f((lodX * J3dLAND.LAND_SIZE), 0,
-						(-lodY * J3dLAND.LAND_SIZE)), scale);
+				Transform3D t = new Transform3D(new Quat4f(0, 0, 0, 1),
+						new Vector3f((lodX * J3dLAND.LAND_SIZE), 0, (-lodY * J3dLAND.LAND_SIZE)), scale);
 				tg.setTransform(t);
 
 				for (NifRef cnr : root.children)
 				{
 					NiAVObject child = (NiAVObject) nf.blocks.get(cnr);
 
-					if (child instanceof NiTriShape)
+					if (child instanceof BSTriShape)
 					{
 						// regular lod terrains
-						NiTriShape niTriShape = (NiTriShape) child;
-						NiTriShapeData data = (NiTriShapeData) blocks.get(niTriShape.data);
+						BSTriShape bsTriShape = (BSTriShape) child;
 
 						//scale 4 will get morph treatment later
 						boolean morphable = (scale == 4);
-						IndexedGeometryArray baseItsa = J3dNiTriShape.createGeometry(data, morphable);
+						IndexedGeometryArray baseItsa = J3dBSTriShape.createGeometry(bsTriShape, morphable);
 
 						if (morphable)
 						{
@@ -68,7 +66,7 @@ public class Fo4LODLandscape extends MorphingLandscape
 						Shape3D shape = new Shape3D();
 						shape.setGeometry(baseItsa);
 
-						BSLightingShaderProperty lp = getLightingProperty(niTriShape, blocks);
+						BSLightingShaderProperty lp = getLightingProperty(bsTriShape, blocks);
 						if (lp != null)
 						{
 							BSShaderTextureSet ts = (BSShaderTextureSet) blocks.get(lp.TextureSet);
@@ -77,27 +75,26 @@ public class Fo4LODLandscape extends MorphingLandscape
 						}
 						else
 						{
-							System.out.println("unpropertied trishape in skyrim lod " + niTriShape + " in " + meshName);
+							System.out.println("unpropertied bsTriShape in lod " + bsTriShape + " in " + meshName);
 						}
 					}
 					else if (child instanceof BSMultiBoundNode)
 					{
-						//Skyrim has water under it's own bounds node
+						//has water under it's own bounds node
 						BSMultiBoundNode waterRoot = (BSMultiBoundNode) child;
 
 						for (NifRef wcnr : waterRoot.children)
 						{
 							NiAVObject waterChild = (NiAVObject) nf.blocks.get(wcnr);
 
-							if (waterChild instanceof NiTriShape)
+							if (waterChild instanceof BSTriShape)
 							{
 								// regular lod terrains
-								NiTriShape niTriShape = (NiTriShape) waterChild;
-								NiTriShapeData data = (NiTriShapeData) blocks.get(niTriShape.data);
+								BSTriShape bsTriShape = (BSTriShape) waterChild;
 
 								//scale 4 will get morph treatment later
 								boolean morphable = (scale == 4);
-								IndexedGeometryArray baseItsa = J3dNiTriShape.createGeometry(data, morphable);
+								IndexedGeometryArray baseItsa = J3dBSTriShape.createGeometry(bsTriShape, morphable);
 
 								if (morphable)
 								{
@@ -107,10 +104,10 @@ public class Fo4LODLandscape extends MorphingLandscape
 								Shape3D shape = new Shape3D();
 								shape.setGeometry(baseItsa);
 
-								BSLightingShaderProperty lp = getLightingProperty(niTriShape, blocks);
+								BSLightingShaderProperty lp = getLightingProperty(bsTriShape, blocks);
 								if (lp != null)
 								{
-									System.out.println("Skyrim water child has properties! " + waterChild + " in " + meshName);
+									System.out.println("FO4 water child has properties! " + waterChild + " in " + meshName);
 								}
 								else
 								{
@@ -144,9 +141,9 @@ public class Fo4LODLandscape extends MorphingLandscape
 		}
 	}
 
-	private BSLightingShaderProperty getLightingProperty(NiTriShape niTriShape, NiObjectList blocks)
+	private static BSLightingShaderProperty getLightingProperty(BSTriShape bsTriShape, NiObjectList blocks)
 	{
-		for (NifRef pnr : niTriShape.properties)
+		for (NifRef pnr : bsTriShape.properties)
 		{
 			NiObject p = blocks.get(pnr);
 			if (p instanceof BSLightingShaderProperty)

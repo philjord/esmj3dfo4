@@ -167,6 +167,45 @@ public class WEAP extends RECO
 			}else if (sr.getType().equals("OBTF"))
 			{
 				// new
+			}else if (sr.getType().equals("YNAM"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("ZNAM"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("INRD"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("APPR"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("STOP"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("FNAM"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("LNAM"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("WAMD"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("WZMD"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("DAMA"))
+			{
+				// new
 			}
 			else
 			{

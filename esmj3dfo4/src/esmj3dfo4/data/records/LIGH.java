@@ -96,6 +96,14 @@ public class LIGH extends CommonLIGH
 			{
 				// new
 			}
+			else if (sr.getType().equals("LNAM"))
+			{
+				// new
+			}
+			else if (sr.getType().equals("WGDR"))
+			{
+				// new
+			}
 			else
 			{
 				System.out.println("unhandled : " + sr.getType() + " in record " + recordData + " in " + this);
