@@ -38,6 +38,7 @@ import esmj3dfo4.data.records.LIGH;
 import esmj3dfo4.data.records.LVLI;
 import esmj3dfo4.data.records.LVLN;
 import esmj3dfo4.data.records.MISC;
+import esmj3dfo4.data.records.MSTT;
 import esmj3dfo4.data.records.NPC_;
 import esmj3dfo4.data.records.REFR;
 import esmj3dfo4.data.records.SCOL;
@@ -294,8 +295,8 @@ public class J3dREFRFactory
 			//FIXME: MSTT are too "misty" for now removed, 
 			//MSTT records contain information on movable static objects.
 
-			//MSTT mstt = new MSTT(baseRecord);
-			//return makeJ3dRECODynInst(refr, mstt, mstt.MODL, makePhys, mediaSources);
+			MSTT mstt = new MSTT(baseRecord);
+			return makeJ3dRECODynInst(refr, mstt, mstt.MODL, makePhys, mediaSources);
 		}
 		else if (baseRecord.getRecordType().equals("TACT"))
 		{
