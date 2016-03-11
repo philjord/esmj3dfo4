@@ -72,6 +72,10 @@ public class KEYM extends RECO
 			{
 
 			}
+			else if (sr.getType().equals("PTRN"))
+			{
+				// FO4
+			}
 			else
 			{
 				System.out.println("unhandled : " + sr.getType() + " in record " + recordData + " in " + this);

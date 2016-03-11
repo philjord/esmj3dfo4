@@ -207,6 +207,10 @@ public class WEAP extends RECO
 			{
 				// new
 			}
+			else if (sr.getType().equals("MASE"))
+			{
+				// FO4
+			}	
 			else
 			{
 				System.out.println("unhandled : " + sr.getType() + " in record " + recordData + " in " + this);

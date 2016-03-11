@@ -181,6 +181,10 @@ public class TERM extends RECO
 			{
 				// new
 			}
+			else if (sr.getType().equals("BTXT"))
+			{
+				// FO4
+			}			
 			else
 			{
 				System.out.println("unhandled : " + sr.getType() + " in record " + recordData + " in " + this);
