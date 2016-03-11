@@ -11,9 +11,6 @@
         </sealing>
     </manifest>
     <selectedElements exportClassFiles="true" exportJavaFiles="false" exportOutputFolder="false">
-        <file path="/esmj3dfo4/.project"/>
-        <file path="/esmj3dfo4/.classpath"/>
         <javaElement handleIdentifier="=esmj3dfo4/src"/>
-        <file path="/esmj3dfo4/.gitignore"/>
     </selectedElements>
 </jardesc>
