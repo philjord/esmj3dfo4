@@ -76,6 +76,10 @@ public class MSTT extends RECO
 			{
 
 			}
+			else if (sr.getType().equals("VMAD"))
+			{
+
+			}
 			else
 			{
 				System.out.println("unhandled : " + sr.getType() + " in record " + recordData + " in " + this);

@@ -184,7 +184,11 @@ public class TERM extends RECO
 			else if (sr.getType().equals("BTXT"))
 			{
 				// FO4
-			}			
+			}
+			else if (sr.getType().equals("VMAD"))
+			{
+
+			}
 			else
 			{
 				System.out.println("unhandled : " + sr.getType() + " in record " + recordData + " in " + this);
