@@ -1,16 +1,16 @@
 package esmj3dfo4.data.records;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import javax.vecmath.Color3f;
 
-import tools.io.ESMByteConvert;
 import esmj3d.data.shared.records.CommonLIGH;
 import esmj3d.data.shared.subrecords.FormID;
 import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.data.shared.subrecords.ZString;
 import esmmanager.common.data.record.Record;
 import esmmanager.common.data.record.Subrecord;
+import tools.io.ESMByteConvert;
 
 public class LIGH extends CommonLIGH
 {
@@ -33,21 +33,21 @@ public class LIGH extends CommonLIGH
 	{
 		super(recordData);
 
-		ArrayList<Subrecord> subrecords = recordData.getSubrecords();
+		List<Subrecord> subrecords = recordData.getSubrecords();
 		for (int i = 0; i < subrecords.size(); i++)
 		{
 			Subrecord sr = subrecords.get(i);
-			byte[] bs = sr.getData();
+			byte[] bs = sr.getSubrecordData();
 
-			if (sr.getType().equals("EDID"))
+			if (sr.getSubrecordType().equals("EDID"))
 			{
 				EDID = new ZString(bs);
 			}
-			else if (sr.getType().equals("FULL"))
+			else if (sr.getSubrecordType().equals("FULL"))
 			{
 				FULL = new FormID(bs);
 			}
-			else if (sr.getType().equals("DATA"))
+			else if (sr.getSubrecordType().equals("DATA"))
 			{
 				radius = ESMByteConvert.extractInt(bs, 4);
 
@@ -70,43 +70,43 @@ public class LIGH extends CommonLIGH
 				 */
 			}
 
-			else if (sr.getType().equals("MODL"))
+			else if (sr.getSubrecordType().equals("MODL"))
 			{
 				MODL = new MODL(bs);
 			}
-			else if (sr.getType().equals("MODT"))
+			else if (sr.getSubrecordType().equals("MODT"))
 			{
 				MODL.addMODTSub(bs);
 			}
 
-			else if (sr.getType().equals("FNAM"))
+			else if (sr.getSubrecordType().equals("FNAM"))
 			{
 				fade = ESMByteConvert.extractFloat(bs, 0);
 				// System.out.println("FNAM " + fade);
 			}
-			else if (sr.getType().equals("SNAM"))
+			else if (sr.getSubrecordType().equals("SNAM"))
 			{
 				SNAM = bs;
 			}
-			else if (sr.getType().equals("OBND"))
+			else if (sr.getSubrecordType().equals("OBND"))
 			{
 
 			}
-			else if (sr.getType().equals("NAM0"))
+			else if (sr.getSubrecordType().equals("NAM0"))
 			{
 				// new
 			}
-			else if (sr.getType().equals("LNAM"))
+			else if (sr.getSubrecordType().equals("LNAM"))
 			{
 				// new
 			}
-			else if (sr.getType().equals("WGDR"))
+			else if (sr.getSubrecordType().equals("WGDR"))
 			{
 				// new
 			}
 			else
 			{
-				System.out.println("unhandled : " + sr.getType() + " in record " + recordData + " in " + this);
+				System.out.println("unhandled : " + sr.getSubrecordType() + " in record " + recordData + " in " + this);
 			}
 		}
 	}
