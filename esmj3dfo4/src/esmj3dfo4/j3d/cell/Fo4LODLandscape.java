@@ -66,6 +66,8 @@ public class Fo4LODLandscape extends MorphingLandscape
 
 						Shape3D shape = new Shape3D();
 						shape.clearCapabilities();
+						shape.setPickable(false);
+						shape.setCollidable(false);
 						shape.setGeometry(baseItsa);
 
 						BSLightingShaderProperty lp = getLightingProperty(bsTriShape, blocks);
