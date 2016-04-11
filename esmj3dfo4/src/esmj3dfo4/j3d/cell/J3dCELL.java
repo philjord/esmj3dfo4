@@ -121,7 +121,7 @@ public class J3dCELL extends J3dCELLGeneral implements UpdateListener
 						if (parentLANDrec != null)
 							j3dLAND = new J3dLAND(new LAND(parentLANDrec));
 						else*/
-					j3dLAND = new J3dLAND(new LAND(record), cellLocation);
+					j3dLAND = new J3dLAND(new LAND(record));
 				}
 				else
 				{
@@ -129,9 +129,9 @@ public class J3dCELL extends J3dCELLGeneral implements UpdateListener
 					if (parentLANDrec != null)
 						j3dLAND = new J3dLAND(new LAND(parentLANDrec), master, mediaSources.getTextureSource());
 					else*/
-					j3dLAND = new J3dLAND(new LAND(record), master, mediaSources.getTextureSource(), cellLocation);
+					j3dLAND = new J3dLAND(new LAND(record), master, mediaSources.getTextureSource());
 				}
-
+				j3dLAND.setLocation(cellLocation);
 				 
 				ret = j3dLAND;
 			}
