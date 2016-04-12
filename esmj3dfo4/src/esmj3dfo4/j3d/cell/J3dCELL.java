@@ -132,7 +132,7 @@ public class J3dCELL extends J3dCELLGeneral implements UpdateListener
 					j3dLAND = new J3dLAND(new LAND(record), master, mediaSources.getTextureSource());
 				}
 				j3dLAND.setLocation(cellLocation);
-				 
+
 				ret = j3dLAND;
 			}
 			else if (record.getRecordType().equals("NAVM"))
@@ -140,6 +140,10 @@ public class J3dCELL extends J3dCELLGeneral implements UpdateListener
 
 			}
 			else if (record.getRecordType().equals("PHZD"))
+			{
+
+			}
+			else if (record.getRecordType().equals("PGRE"))
 			{
 
 			}

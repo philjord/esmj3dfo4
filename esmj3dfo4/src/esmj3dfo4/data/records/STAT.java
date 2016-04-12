@@ -100,6 +100,10 @@ public class STAT extends RECO
 			{
 				// new
 			}
+			else if (sr.getSubrecordType().equals("NVNM"))
+			{
+				// new
+			}
 
 			else
 			{

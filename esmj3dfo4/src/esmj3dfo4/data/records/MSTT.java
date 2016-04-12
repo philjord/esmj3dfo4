@@ -80,6 +80,30 @@ public class MSTT extends RECO
 			{
 
 			}
+			else if (sr.getSubrecordType().equals("KSIZ"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("KWDA"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("DSTA"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("DMDS"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("MODC"))
+			{
+
+			}else if (sr.getSubrecordType().equals("PRPS"))
+			{
+
+			}
+			
 			else
 			{
 				System.out.println("unhandled : " + sr.getSubrecordType() + " in record " + recordData + " in " + this);
