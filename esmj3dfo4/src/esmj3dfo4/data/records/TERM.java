@@ -188,6 +188,9 @@ public class TERM extends RECO
 			else if (sr.getSubrecordType().equals("VMAD"))
 			{
 
+			}else if (sr.getSubrecordType().equals("NAM0"))
+			{
+
 			}
 			else
 			{

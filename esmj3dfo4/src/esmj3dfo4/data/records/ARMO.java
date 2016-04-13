@@ -120,31 +120,44 @@ public class ARMO extends RECO
 
 			else if (sr.getSubrecordType().equals("VMAD"))
 			{
-			}else if (sr.getSubrecordType().equals("PTRN"))
+			}
+			else if (sr.getSubrecordType().equals("PTRN"))
 			{
 				// new
-			}else if (sr.getSubrecordType().equals("OBTS"))
+			}
+			else if (sr.getSubrecordType().equals("OBTS"))
 			{
 				// new
-			}else if (sr.getSubrecordType().equals("OBTE"))
+			}
+			else if (sr.getSubrecordType().equals("OBTE"))
 			{
 				// new
-			}else if (sr.getSubrecordType().equals("INDX"))
+			}
+			else if (sr.getSubrecordType().equals("INDX"))
 			{
 				// new
-			}else if (sr.getSubrecordType().equals("APPR"))
+			}
+			else if (sr.getSubrecordType().equals("APPR"))
 			{
 				// new
-			}else if (sr.getSubrecordType().equals("STOP"))
+			}
+			else if (sr.getSubrecordType().equals("STOP"))
 			{
 				// new
-			}else if (sr.getSubrecordType().equals("BOD2"))
+			}
+			else if (sr.getSubrecordType().equals("BOD2"))
 			{
 				// new
-			}else if (sr.getSubrecordType().equals("FNAM"))
+			}
+			else if (sr.getSubrecordType().equals("FNAM"))
 			{
 				// new
-			}else if (sr.getSubrecordType().equals("INRD"))
+			}
+			else if (sr.getSubrecordType().equals("INRD"))
+			{
+				// new
+			}
+			else if (sr.getSubrecordType().equals("OBTF"))
 			{
 				// new
 			}

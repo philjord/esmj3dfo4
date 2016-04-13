@@ -99,11 +99,16 @@ public class MSTT extends RECO
 			else if (sr.getSubrecordType().equals("MODC"))
 			{
 
-			}else if (sr.getSubrecordType().equals("PRPS"))
+			}
+			else if (sr.getSubrecordType().equals("PRPS"))
 			{
 
 			}
-			
+			else if (sr.getSubrecordType().equals("PTRN"))
+			{
+
+			}
+
 			else
 			{
 				System.out.println("unhandled : " + sr.getSubrecordType() + " in record " + recordData + " in " + this);

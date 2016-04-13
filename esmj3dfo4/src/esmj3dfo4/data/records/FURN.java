@@ -133,6 +133,9 @@ public class FURN extends RECO
 			else if (sr.getSubrecordType().equals("COCT"))
 			{
 				// new
+			}else if (sr.getSubrecordType().equals("DMDL"))
+			{
+				// new
 			}
 			else
 			{

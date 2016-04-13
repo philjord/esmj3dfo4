@@ -107,16 +107,32 @@ public class ACTI extends RECO
 			else if (sr.getSubrecordType().equals("PTRN"))
 			{
 				// new
-			}else if (sr.getSubrecordType().equals("CTDA"))
+			}
+			else if (sr.getSubrecordType().equals("CTDA"))
 			{
 				//new
-			}else if (sr.getSubrecordType().equals("CITC"))
+			}
+			else if (sr.getSubrecordType().equals("CITC"))
 			{
 				//new
-			}else if (sr.getSubrecordType().equals("STCP"))
+			}
+			else if (sr.getSubrecordType().equals("STCP"))
 			{
 				//new
-			}else if (sr.getSubrecordType().equals("ATTX"))
+			}
+			else if (sr.getSubrecordType().equals("ATTX"))
+			{
+				//new
+			}
+			else if (sr.getSubrecordType().equals("FTYP"))
+			{
+				//new
+			}
+			else if (sr.getSubrecordType().equals("NTRM"))
+			{
+				//new
+			}
+			else if (sr.getSubrecordType().equals("DAMC"))
 			{
 				//new
 			}
