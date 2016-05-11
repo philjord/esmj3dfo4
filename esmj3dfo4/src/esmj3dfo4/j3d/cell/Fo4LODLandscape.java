@@ -41,7 +41,7 @@ public class Fo4LODLandscape extends MorphingLandscape
 				BSMultiBoundNode root = (BSMultiBoundNode) blocks.root();
 
 				TransformGroup tg = new TransformGroup();
-				tg.clearCapabilities(); 
+				tg.clearCapabilities();
 				Transform3D t = new Transform3D(new Quat4f(0, 0, 0, 1),
 						new Vector3f((lodX * J3dLAND.LAND_SIZE), 0, (-lodY * J3dLAND.LAND_SIZE)), scale);
 				tg.setTransform(t);
@@ -59,27 +59,31 @@ public class Fo4LODLandscape extends MorphingLandscape
 						boolean morphable = (scale == 4);
 						IndexedGeometryArray baseItsa = J3dBSTriShape.createGeometry(bsTriShape, morphable);
 
-						if (morphable)
+						//TODO: currently trouble with a morphable that has no skin
+						if (baseItsa != null)
 						{
-							this.addGeometryArray(baseItsa);
-						}
+							if (morphable)
+							{
+								this.addGeometryArray(baseItsa);
+							}
 
-						Shape3D shape = new Shape3D();
-						shape.clearCapabilities();
-						shape.setPickable(false);
-						shape.setCollidable(false);
-						shape.setGeometry(baseItsa);
+							Shape3D shape = new Shape3D();
+							shape.clearCapabilities();
+							shape.setPickable(false);
+							shape.setCollidable(false);
+							shape.setGeometry(baseItsa);
 
-						BSLightingShaderProperty lp = getLightingProperty(bsTriShape, blocks);
-						if (lp != null)
-						{
-							BSShaderTextureSet ts = (BSShaderTextureSet) blocks.get(lp.TextureSet);
-							shape.setAppearance(createAppearance(textureSource.getTexture(ts.textures[0])));
-							tg.addChild(shape);
-						}
-						else
-						{
-							System.out.println("unpropertied bsTriShape in lod " + bsTriShape + " in " + meshName);
+							BSLightingShaderProperty lp = getLightingProperty(bsTriShape, blocks);
+							if (lp != null)
+							{
+								BSShaderTextureSet ts = (BSShaderTextureSet) blocks.get(lp.TextureSet);
+								shape.setAppearance(createAppearance(textureSource.getTexture(ts.textures[0])));
+								tg.addChild(shape);
+							}
+							else
+							{
+								System.out.println("unpropertied bsTriShape in lod " + bsTriShape + " in " + meshName);
+							}
 						}
 					}
 					else if (child instanceof BSMultiBoundNode)
@@ -99,25 +103,28 @@ public class Fo4LODLandscape extends MorphingLandscape
 								//scale 4 will get morph treatment later
 								boolean morphable = (scale == 4);
 								IndexedGeometryArray baseItsa = J3dBSTriShape.createGeometry(bsTriShape, morphable);
-
-								if (morphable)
+								//TODO: currently trouble with a morphable that has no skin
+								if (baseItsa != null)
 								{
-									this.addGeometryArray(baseItsa);
-								}
+									if (morphable)
+									{
+										this.addGeometryArray(baseItsa);
+									}
 
-								Shape3D shape = new Shape3D();
-								shape.clearCapabilities();
-								shape.setGeometry(baseItsa);
+									Shape3D shape = new Shape3D();
+									shape.clearCapabilities();
+									shape.setGeometry(baseItsa);
 
-								BSLightingShaderProperty lp = getLightingProperty(bsTriShape, blocks);
-								if (lp != null)
-								{
-									System.out.println("FO4 water child has properties! " + waterChild + " in " + meshName);
-								}
-								else
-								{
-									shape.setAppearance(createBasicWaterApp());
-									tg.addChild(shape);
+									BSLightingShaderProperty lp = getLightingProperty(bsTriShape, blocks);
+									if (lp != null)
+									{
+										System.out.println("FO4 water child has properties! " + waterChild + " in " + meshName);
+									}
+									else
+									{
+										shape.setAppearance(createBasicWaterApp());
+										tg.addChild(shape);
+									}
 								}
 							}
 							else
