@@ -104,6 +104,22 @@ public class LIGH extends CommonLIGH
 			{
 				// new
 			}
+			else if (sr.getSubrecordType().equals("PTRN"))
+			{
+				// new
+			}
+			else if (sr.getSubrecordType().equals("KSIZ"))
+			{
+				// new
+			}
+			else if (sr.getSubrecordType().equals("KWDA"))
+			{
+				// new
+			}
+			else if (sr.getSubrecordType().equals("PRPS"))
+			{
+				// new
+			}
 			else
 			{
 				System.out.println("unhandled : " + sr.getSubrecordType() + " in record " + recordData + " in " + this);
