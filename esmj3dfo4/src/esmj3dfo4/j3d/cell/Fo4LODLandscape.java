@@ -41,7 +41,6 @@ public class Fo4LODLandscape extends MorphingLandscape
 				BSMultiBoundNode root = (BSMultiBoundNode) blocks.root();
 
 				TransformGroup tg = new TransformGroup();
-				tg.clearCapabilities();
 				Transform3D t = new Transform3D(new Quat4f(0, 0, 0, 1),
 						new Vector3f((lodX * J3dLAND.LAND_SIZE), 0, (-lodY * J3dLAND.LAND_SIZE)), scale);
 				tg.setTransform(t);
@@ -68,7 +67,6 @@ public class Fo4LODLandscape extends MorphingLandscape
 							}
 
 							Shape3D shape = new Shape3D();
-							shape.clearCapabilities();
 							shape.setPickable(false);
 							shape.setCollidable(false);
 							shape.setGeometry(baseItsa);
@@ -112,7 +110,6 @@ public class Fo4LODLandscape extends MorphingLandscape
 									}
 
 									Shape3D shape = new Shape3D();
-									shape.clearCapabilities();
 									shape.setGeometry(baseItsa);
 
 									BSLightingShaderProperty lp = getLightingProperty(bsTriShape, blocks);
