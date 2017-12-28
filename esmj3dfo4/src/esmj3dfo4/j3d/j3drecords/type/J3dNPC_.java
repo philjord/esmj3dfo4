@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import org.jogamp.vecmath.Color3f;
 
+import esmio.common.data.record.IRecordStore;
+import esmio.common.data.record.Record;
 import esmj3d.data.shared.subrecords.CNTO;
 import esmj3d.data.shared.subrecords.FormID;
 import esmj3d.j3d.BethRenderSettings;
@@ -17,8 +19,6 @@ import esmj3dfo4.data.records.OTFT;
 import esmj3dfo4.data.records.RACE;
 import esmj3dfo4.data.records.WEAP;
 import esmj3dfo4.data.subrecords.LVLO;
-import esmmanager.common.data.record.IRecordStore;
-import esmmanager.common.data.record.Record;
 import nif.character.NifCharacter;
 import tools3d.utils.scenegraph.Fadable;
 import utils.ESConfig;
