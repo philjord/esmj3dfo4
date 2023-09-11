@@ -77,10 +77,10 @@ public class J3dCELL extends J3dCELLGeneral implements UpdateListener
 		catch (NullPointerException e)
 		{
 			if (e.getStackTrace().length > 0)
-				System.out.println("J3dCELL " + cell.formId + " - null pointer making record " + record + " " + record.getRecordType()
+				System.out.println("J3dCELL.makeJ3dRECOFar " + cell.formId + " - null pointer making record " + record + " " + record.getRecordType()
 						+ " in " + e.getStackTrace()[0]);
 			else
-				System.out.println("J3dCELL " + cell.formId + " - null pointer making record " + record + " " + record.getRecordType());
+				System.out.println("J3dCELL.makeJ3dRECOFar " + cell.formId + " - null pointer making record " + record + " " + record.getRecordType());
 
 			if (record.getRecordType().equals("REFR"))
 			{
@@ -158,10 +158,10 @@ public class J3dCELL extends J3dCELLGeneral implements UpdateListener
 		catch (NullPointerException e)
 		{
 			if (e.getStackTrace().length > 0)
-				System.out.println("J3dCELL " + cell.formId + " - null pointer making record " + record + " " + record.getRecordType()
+				System.out.println("J3dCELL.makeJ3dRECO " + cell.formId + " - null pointer making record " + record + " " + record.getRecordType()
 						+ " in " + e.getStackTrace()[0]);
 			else
-				System.out.println("J3dCELL " + cell.formId + " - null pointer making record " + record + " " + record.getRecordType());
+				System.out.println("J3dCELL.makeJ3dRECO " + cell.formId + " - null pointer making record " + record + " " + record.getRecordType());
 
 			if (record.getRecordType().equals("REFR"))
 			{
@@ -185,6 +185,9 @@ public class J3dCELL extends J3dCELLGeneral implements UpdateListener
 		if (record.getRecordType().equals("REFR") && !makePhys)
 		{
 			REFR refr = new REFR(record);
+			
+			if (refr.NAME == null)
+				return false;
 
 			Record baseRecord = master.getRecord(refr.NAME.formId);
 			if (baseRecord != null)
