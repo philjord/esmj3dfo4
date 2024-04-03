@@ -196,16 +196,26 @@ public class J3dREFRFactory
 		if (baseRecord.getRecordType().equals("STAT"))
 		{
 			STAT stat = new STAT(baseRecord);
-			//TODO: this is not teh marker flag, need to work it out
+			//0x800000 is the marker flag and everything except  
+			//BirdMarkerGroundPOI BirdMarkerLineUpRightStr10 BirdMarkerLine uses it
+			//Markers\StaticCollectionPivotDummy.nif 0
+			
+			
+			//acti.MODL markers\editormarkers\commentmarker256.nif
+			//acti.MODL markers\editormarkers\commentmarker1024.nif
+			//acti.MODL markers\MarkerDummy02.nif 0
+			//furn.MODL Markers\InvisibleGeneric01.nif
+			
+			//stat.MODL Markers\BlackPlane01.nif 67108864 = 0x4000000 not sure what it is probably just a back of window
+				
+
 			if (stat.MODL != null && (!stat.isFlagSet(RECO.IsMarker_Flag) || BethRenderSettings.isShowEditorMarkers()))
 			{
-
 				// fader handled by STAT
 				J3dRECOStatInst j3dinst = new J3dRECOStatInst(refr, false, makePhys);
 				J3dSTAT j3dSTAT = new J3dSTAT(stat, makePhys, mediaSources);
 				j3dinst.setJ3dRECOType(j3dSTAT);
 				return j3dinst;
-
 			}
 
 			return null;
@@ -223,7 +233,7 @@ public class J3dREFRFactory
 		else if (baseRecord.getRecordType().equals("ACTI"))
 		{
 			ACTI acti = new ACTI(baseRecord);
-			if (acti.MODL != null)
+			if (acti.MODL != null && (!acti.isFlagSet(RECO.IsMarker_Flag) || BethRenderSettings.isShowEditorMarkers()))
 			{
 				return makeJ3dRECOActionInst(refr, acti, acti.MODL, makePhys, mediaSources);
 			}
@@ -267,13 +277,19 @@ public class J3dREFRFactory
 		}
 		else if (baseRecord.getRecordType().equals("CONT"))
 		{
-			J3dRECOStatInst j3dinst = new J3dRECOStatInst(refr, new J3dCONT(new CONT(baseRecord), makePhys, mediaSources), true, makePhys);
-			return j3dinst;
+			CONT cont = new CONT(baseRecord);
+			if (cont.MODL != null && (!cont.isFlagSet(RECO.IsMarker_Flag) || BethRenderSettings.isShowEditorMarkers())) {
+				return new J3dRECOStatInst(refr, new J3dCONT(cont, makePhys, mediaSources), true, makePhys);
+			}
+			return null;
 		}
 		else if (baseRecord.getRecordType().equals("FURN"))
 		{
 			FURN furn = new FURN(baseRecord);
-			return makeJ3dRECOActionInst(refr, furn, furn.MODL, makePhys, mediaSources);
+			if (furn.MODL != null && (!furn.isFlagSet(RECO.IsMarker_Flag) || BethRenderSettings.isShowEditorMarkers())) {
+				return makeJ3dRECOActionInst(refr, furn, furn.MODL, makePhys, mediaSources);
+			}
+			return null;
 		}
 		else if (baseRecord.getRecordType().equals("GRAS"))
 		{
@@ -292,9 +308,7 @@ public class J3dREFRFactory
 		}
 		else if (baseRecord.getRecordType().equals("MSTT"))
 		{
-			//FIXME: MSTT are too "misty" for now removed, 
-			//MSTT records contain information on movable static objects.
-
+			//MSTT records contain information on movable static objects.SetDressing\Fans\IndustrialFanSmall01_Dest.nif
 			MSTT mstt = new MSTT(baseRecord);
 			return makeJ3dRECODynInst(refr, mstt, mstt.MODL, makePhys, mediaSources);
 		}
@@ -345,7 +359,8 @@ public class J3dREFRFactory
 		}
 		else if (baseRecord.getRecordType().equals("LIGH"))
 		{
-			return new J3dRECOStatInst(refr, new J3dGeneralLIGH(new LIGH(baseRecord), makePhys, mediaSources), true, makePhys);
+			LIGH ligh = new LIGH(baseRecord);
+			return new J3dRECOStatInst(refr, new J3dGeneralLIGH(ligh, makePhys, mediaSources), true, makePhys);
 		}
 		else if (baseRecord.getRecordType().equals("TREE"))
 		{
@@ -356,9 +371,10 @@ public class J3dREFRFactory
 		}
 		else if (baseRecord.getRecordType().equals("SOUN"))
 		{
+			SOUN soun = new SOUN(baseRecord);
 			if (!makePhys)
 			{
-				return new J3dRECOStatInst(refr, new J3dGeneralSOUN(new SOUN(baseRecord), master, mediaSources), false, makePhys);
+				return new J3dRECOStatInst(refr, new J3dGeneralSOUN(soun, master, mediaSources), false, makePhys);
 			}
 		}
 		else if (baseRecord.getRecordType().equals("BNDS"))

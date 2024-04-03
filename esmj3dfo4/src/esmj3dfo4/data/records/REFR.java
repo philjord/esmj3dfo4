@@ -20,7 +20,7 @@ public class REFR extends CommonREFR
 
 	public byte[] XRMR; //XRMR 	reference marker 	struct 	ubyte - count of following XLRM, ubyte[3] - seems to be flags 0x10000 - seen in 0x000C6B47, 48 
 
-	public ArrayList<FormID> XLMRs = new ArrayList<FormID>(); //XLRM 	location room marker 	formid 	REFR usually to a STAT
+	public ArrayList<FormID> XLMRs = null; //XLRM 	location room marker 	formid 	REFR usually to a STAT
 
 	public REFR(Record recordData)
 	{
@@ -47,7 +47,12 @@ public class REFR extends CommonREFR
 			}
 			else if (sr.getSubrecordType().equals("XLRM"))
 			{
+				if(XLMRs == null)
+					XLMRs = new ArrayList<FormID>();
 				XLMRs.add(new FormID(bs));
+			}
+			else if (sr.getSubrecordType().equals("XLYR"))
+			{
 			}
 			else if (sr.getSubrecordType().equals("VMAD"))
 			{
