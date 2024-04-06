@@ -136,6 +136,16 @@ public class ACTI extends RECO
 			{
 				//new
 			}
+			else if (sr.getSubrecordType().equals("DSTA"))
+			{
+				//new
+			}else if (sr.getSubrecordType().equals("CIS1"))
+			{
+				//new
+			}else if (sr.getSubrecordType().equals("CIS2"))
+			{
+				//new
+			}
 			else
 			{
 				System.out.println("unhandled : " + sr.getSubrecordType() + " in record " + recordData + " in " + this);

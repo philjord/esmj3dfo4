@@ -135,6 +135,10 @@ public class MISC extends RECO
 			{
 				// new
 			}
+			else if (sr.getSubrecordType().equals("FIMD"))
+			{
+				// new
+			}
 			else
 			{
 				System.out.println("unhandled : " + sr.getSubrecordType() + " in record " + recordData + " in " + this);
