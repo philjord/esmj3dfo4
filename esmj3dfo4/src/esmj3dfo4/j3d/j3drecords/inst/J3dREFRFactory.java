@@ -6,6 +6,7 @@ import esfilemanager.common.data.record.IRecordStore;
 import esfilemanager.common.data.record.Record;
 import esmj3d.data.shared.records.CommonREFR;
 import esmj3d.data.shared.records.RECO;
+import esmj3d.data.shared.records.TXST;
 import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.j3d.BethRenderSettings;
 import esmj3d.j3d.LODNif;
@@ -27,13 +28,16 @@ import esmj3dfo4.data.records.ACTI;
 import esmj3dfo4.data.records.ADDN;
 import esmj3dfo4.data.records.ALCH;
 import esmj3dfo4.data.records.AMMO;
+import esmj3dfo4.data.records.APPA;
 import esmj3dfo4.data.records.ARMO;
+import esmj3dfo4.data.records.ASPC;
 import esmj3dfo4.data.records.BOOK;
 import esmj3dfo4.data.records.CONT;
 import esmj3dfo4.data.records.DOOR;
 import esmj3dfo4.data.records.FLOR;
 import esmj3dfo4.data.records.FURN;
 import esmj3dfo4.data.records.GRAS;
+import esmj3dfo4.data.records.IDLM;
 import esmj3dfo4.data.records.INGR;
 import esmj3dfo4.data.records.KEYM;
 import esmj3dfo4.data.records.LIGH;
@@ -44,6 +48,7 @@ import esmj3dfo4.data.records.MSTT;
 import esmj3dfo4.data.records.NPC_;
 import esmj3dfo4.data.records.REFR;
 import esmj3dfo4.data.records.SCOL;
+import esmj3dfo4.data.records.SLGM;
 import esmj3dfo4.data.records.SOUN;
 import esmj3dfo4.data.records.STAT;
 import esmj3dfo4.data.records.TACT;
@@ -188,6 +193,7 @@ public class J3dREFRFactory
 
 	public static J3dRECOInst makeJ3DRefer(REFR refr, boolean makePhys, IRecordStore master, MediaSources mediaSources)
 	{
+		boolean outputModelNames = false;
 		// does a parent enablage flag exists, and is is defaulted to off?
 		if (refr.xesp != null && CommonREFR.getParentEnable(refr, master) != BethRenderSettings.isFlipParentEnableDefault())
 			return null;
@@ -195,20 +201,13 @@ public class J3dREFRFactory
 
 		if (baseRecord.getRecordType().equals("STAT"))
 		{
-			STAT stat = new STAT(baseRecord);
-			//0x800000 is the marker flag and everything except  
-			//BirdMarkerGroundPOI BirdMarkerLineUpRightStr10 BirdMarkerLine uses it
-			//Markers\StaticCollectionPivotDummy.nif 0
-			
-			
-			//acti.MODL markers\editormarkers\commentmarker256.nif
-			//acti.MODL markers\editormarkers\commentmarker1024.nif
-			//acti.MODL markers\MarkerDummy02.nif 0
-			//furn.MODL Markers\InvisibleGeneric01.nif
-			
-			//stat.MODL Markers\BlackPlane01.nif 67108864 = 0x4000000 not sure what it is probably just a back of window
-				
+			STAT stat = new STAT(baseRecord);				
 
+			//if(stat.MODL.model.str.indexOf("Effects") != -1)
+			//	return null;
+			if(outputModelNames)
+				System.out.println("stat.MODL.model.str " +stat.MODL.model.str);		
+			
 			if (stat.MODL != null && (!stat.isFlagSet(RECO.IsMarker_Flag) || BethRenderSettings.isShowEditorMarkers()))
 			{
 				// fader handled by STAT
@@ -221,9 +220,22 @@ public class J3dREFRFactory
 			return null;
 
 		}
+		else if (baseRecord.getRecordType().equals("MSTT"))
+		{
+			//MSTT records contain information on movable static objects.SetDressing\Fans\IndustrialFanSmall01_Dest.nif
+			MSTT mstt = new MSTT(baseRecord);
+			
+			if(outputModelNames)
+				System.out.println("mstt.MODL.model.str " +mstt.MODL.model.str);
+			
+			// my ambient effect have bad shaders so look craz bad
+			if(mstt.MODL.model.str.indexOf("Effects\\Ambient\\") != -1)
+				return null;
+			
+			return makeJ3dRECODynInst(refr, mstt, mstt.MODL, makePhys, mediaSources);
+		}
 		else if (baseRecord.getRecordType().equals("SCOL"))
 		{
-			//TODO: do scols now act like stats?
 			//SCOL are just exactly like STATS
 			SCOL scol = new SCOL(baseRecord);
 			J3dRECOStatInst j3dinst = new J3dRECOStatInst(refr, false, false);
@@ -233,15 +245,13 @@ public class J3dREFRFactory
 		else if (baseRecord.getRecordType().equals("ACTI"))
 		{
 			ACTI acti = new ACTI(baseRecord);
-			if (acti.MODL != null && (!acti.isFlagSet(RECO.IsMarker_Flag) || BethRenderSettings.isShowEditorMarkers()))
-			{
+			if(outputModelNames)
+				System.out.println("acti.MODL.model.str " +acti.MODL.model.str);
+			if (acti.MODL != null && (!acti.isFlagSet(RECO.IsMarker_Flag) || BethRenderSettings.isShowEditorMarkers())){
 				return makeJ3dRECOActionInst(refr, acti, acti.MODL, makePhys, mediaSources);
-			}
-			else
-			{
-				//indicates a pure script
-				return null;
-			}
+			}			
+			//indicates a pure script
+			return null;
 		}
 		else if (baseRecord.getRecordType().equals("ADDN"))
 		{
@@ -258,13 +268,7 @@ public class J3dREFRFactory
 			AMMO ammo = new AMMO(baseRecord);
 			return makeJ3dRECODynInst(refr, ammo, ammo.MODL, makePhys, mediaSources);
 		}
-		else if (baseRecord.getRecordType().equals("APPA"))
-		{
-			//TODO: why?
-			//APPA appa = new APPA(baseRecord);
-			//return makeJ3dRECOInstFader(refr, appa, appa.MODL.model, makePhys, mediaSources);
-			return null;
-		}
+		
 		else if (baseRecord.getRecordType().equals("ARMO"))
 		{
 			ARMO armo = new ARMO(baseRecord);
@@ -278,6 +282,8 @@ public class J3dREFRFactory
 		else if (baseRecord.getRecordType().equals("CONT"))
 		{
 			CONT cont = new CONT(baseRecord);
+			if(outputModelNames)
+				System.out.println("cont.MODL.model.str " +cont.MODL.model.str);
 			if (cont.MODL != null && (!cont.isFlagSet(RECO.IsMarker_Flag) || BethRenderSettings.isShowEditorMarkers())) {
 				return new J3dRECOStatInst(refr, new J3dCONT(cont, makePhys, mediaSources), true, makePhys);
 			}
@@ -286,6 +292,8 @@ public class J3dREFRFactory
 		else if (baseRecord.getRecordType().equals("FURN"))
 		{
 			FURN furn = new FURN(baseRecord);
+			if(outputModelNames)
+				System.out.println("furn.MODL.model.str " +furn.MODL.model.str);
 			if (furn.MODL != null && (!furn.isFlagSet(RECO.IsMarker_Flag) || BethRenderSettings.isShowEditorMarkers())) {
 				return makeJ3dRECOActionInst(refr, furn, furn.MODL, makePhys, mediaSources);
 			}
@@ -305,13 +313,7 @@ public class J3dREFRFactory
 		{
 			MISC misc = new MISC(baseRecord);
 			return makeJ3dRECODynInst(refr, misc, misc.MODL, makePhys, mediaSources);
-		}
-		else if (baseRecord.getRecordType().equals("MSTT"))
-		{
-			//MSTT records contain information on movable static objects.SetDressing\Fans\IndustrialFanSmall01_Dest.nif
-			MSTT mstt = new MSTT(baseRecord);
-			return makeJ3dRECODynInst(refr, mstt, mstt.MODL, makePhys, mediaSources);
-		}
+		}		
 		else if (baseRecord.getRecordType().equals("TACT"))
 		{
 			TACT tact = new TACT(baseRecord);
@@ -337,22 +339,7 @@ public class J3dREFRFactory
 			FLOR flor = new FLOR(baseRecord);
 			return makeJ3dRECOActionInst(refr, flor, flor.MODL, makePhys, mediaSources);
 		}
-		else if (baseRecord.getRecordType().equals("SLGM"))
-		{
-			//SLGM slgm = new SLGM(baseRecord);
-		}
-		else if (baseRecord.getRecordType().equals("ASPC"))
-		{
-			//ASPC aspc = new ASPC(baseRecord);			
-		}
-		else if (baseRecord.getRecordType().equals("IDLM"))
-		{
-			//IDLM idlm = new IDLM(baseRecord);			
-		}
-		else if (baseRecord.getRecordType().equals("TXST"))
-		{
-
-		}
+		
 		else if (baseRecord.getRecordType().equals("DOOR"))
 		{
 			return new J3dRECOStatInst(refr, new J3dDOOR(new DOOR(baseRecord), makePhys, mediaSources), true, makePhys);
@@ -360,6 +347,8 @@ public class J3dREFRFactory
 		else if (baseRecord.getRecordType().equals("LIGH"))
 		{
 			LIGH ligh = new LIGH(baseRecord);
+			if(outputModelNames)
+				System.out.println("ligh.MODL.model.str " +ligh.MODL.model.str);
 			return new J3dRECOStatInst(refr, new J3dGeneralLIGH(ligh, makePhys, mediaSources), true, makePhys);
 		}
 		else if (baseRecord.getRecordType().equals("TREE"))
@@ -376,11 +365,49 @@ public class J3dREFRFactory
 			{
 				return new J3dRECOStatInst(refr, new J3dGeneralSOUN(soun, master, mediaSources), false, makePhys);
 			}
+		}	
+		else if (baseRecord.getRecordType().equals("APPA"))
+		{
+			// apparatus from old games? not see a lot of these
+			APPA appa = new APPA(baseRecord);
+			//return makeJ3dRECOInstFader(refr, appa, appa.MODL.model, makePhys, mediaSources);
+			System.out.println("appa.MODL " + appa + " " + appa.MODL.model.str);
+			return null;
+		}
+		else if (baseRecord.getRecordType().equals("SLGM"))
+		{			
+			//do these even exist? not seeign a lot, arent these sigil stones?
+			SLGM slgm = new SLGM(baseRecord);
+			System.out.println("slgm.MODL " + slgm + " " + slgm.MODL.model.str);
+		}
+		else if (baseRecord.getRecordType().equals("ASPC"))
+		{
+			//weird things like intgenericB?
+			//ASPC aspc = new ASPC(baseRecord);	
+			//if(outputModelNames)
+			//	System.out.println("aspc.MODL.model.str " + aspc.MODL.model.str);
+		}
+		else if (baseRecord.getRecordType().equals("IDLM"))
+		{
+			//markers related to NPCs
+			//IDLM idlm = new IDLM(baseRecord);		
+			//if(outputModelNames)
+			//	System.out.println("idlm.MODL.model.str " + idlm.MODL.model.str);
+		}
+		else if (baseRecord.getRecordType().equals("TXST"))
+		{
+			//lots but texture set so why refr?
+			//TXST txst = new TXST(baseRecord);
+			//if(outputModelNames)
+			//	System.out.println("txst.MODL.model.str " + txst.MODL.model.str);
 		}
 		else if (baseRecord.getRecordType().equals("BNDS"))
 		{
-			//Bounds maybe?
-		}
+			//Bounds maybe? lots
+			// why no BNDS object?
+			//BNDS bnds = new BNDS(baseRecord);
+			//System.out.println("BNDS type refer seen");
+		}	
 		else if (baseRecord.getRecordType().equals("LVLN"))
 		{
 			if (!makePhys)
@@ -398,7 +425,6 @@ public class J3dREFRFactory
 			j3dinst.setJ3dRECOType(makeLVLI(lvli, master, mediaSources));
 			return j3dinst;
 		}
-
 		else
 		{
 			System.out.println("REFR record type not converted to j3d " + baseRecord.getRecordType());

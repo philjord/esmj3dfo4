@@ -7,6 +7,9 @@ import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.ZString;
 
+/**
+ * names like ExtInteriorFakeInteriorBrickMedium, IntGenericB, ExtInteriorFakeInteriorMetalSmall
+ */
 public class ASPC extends RECO
 {
 	public ZString EDID = null;

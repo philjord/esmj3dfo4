@@ -7,7 +7,9 @@ import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.ZString;
 import esmj3dfo4.data.subrecords.DNAM;
-
+/**
+ * NPCSmokeIdleMarker, NPCHandsUpIdleMarker
+ */
 public class IDLM extends RECO
 {
 	public ZString EDID = null;
@@ -49,6 +51,21 @@ public class IDLM extends RECO
 			{
 
 			}
+			else if (sr.getSubrecordType().equals("KSIZ"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("KWDA"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("QNAM"))
+			{
+
+			}
+			
+			
+			
 			else
 			{
 				System.out.println("unhandled : " + sr.getSubrecordType() + " in record " + recordData + " in " + this);

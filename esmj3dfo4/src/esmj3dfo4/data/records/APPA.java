@@ -15,7 +15,7 @@ public class APPA extends RECO
 
 	public FormID FULL;
 
-	public MODL MODL;;
+	public MODL MODL;
 
 	public APPA(Record recordData)
 	{
@@ -67,6 +67,7 @@ public class APPA extends RECO
 		}
 	}
 
+	@Override
 	public String showDetails()
 	{
 		return "APPA : (" + formId + "|" + Integer.toHexString(formId) + ") " + EDID.str + " : " + MODL.model.str;

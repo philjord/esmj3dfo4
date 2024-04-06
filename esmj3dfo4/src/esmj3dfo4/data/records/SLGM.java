@@ -5,11 +5,13 @@ import java.util.List;
 import esfilemanager.common.data.record.Record;
 import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.RECO;
+import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.data.shared.subrecords.ZString;
 
 public class SLGM extends RECO
 {
 	public ZString EDID;
+	public MODL MODL;
 
 	public SLGM(Record recordData)
 	{
@@ -26,7 +28,9 @@ public class SLGM extends RECO
 			}
 			else if (sr.getSubrecordType().equals("OBND")){}
 			else if (sr.getSubrecordType().equals("FULL")){}
-			else if (sr.getSubrecordType().equals("MODL")){}
+			else if (sr.getSubrecordType().equals("MODL")){
+				MODL = new MODL(bs);
+			}
 			else if (sr.getSubrecordType().equals("MODT")){}
 			else if (sr.getSubrecordType().equals("KSIZ")){}
 			else if (sr.getSubrecordType().equals("KWDA")){}
