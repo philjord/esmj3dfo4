@@ -6,7 +6,6 @@ import esfilemanager.common.data.record.IRecordStore;
 import esfilemanager.common.data.record.Record;
 import esmj3d.data.shared.records.CommonREFR;
 import esmj3d.data.shared.records.RECO;
-import esmj3d.data.shared.records.TXST;
 import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.j3d.BethRenderSettings;
 import esmj3d.j3d.LODNif;
@@ -17,12 +16,12 @@ import esmj3d.j3d.j3drecords.inst.J3dRECOStatInst;
 import esmj3d.j3d.j3drecords.type.J3dCONT;
 import esmj3d.j3d.j3drecords.type.J3dDOOR;
 import esmj3d.j3d.j3drecords.type.J3dGeneralLIGH;
+import esmj3d.j3d.j3drecords.type.J3dGeneralSOUN;
 import esmj3d.j3d.j3drecords.type.J3dRECOType;
 import esmj3d.j3d.j3drecords.type.J3dRECOTypeActionable;
 import esmj3d.j3d.j3drecords.type.J3dRECOTypeCha;
 import esmj3d.j3d.j3drecords.type.J3dRECOTypeDynamic;
 import esmj3d.j3d.j3drecords.type.J3dRECOTypeStatic;
-import esmj3d.j3d.j3drecords.type.J3dGeneralSOUN;
 import esmj3d.j3d.trees.TreeMaker;
 import esmj3dfo4.data.records.ACTI;
 import esmj3dfo4.data.records.ADDN;
@@ -30,14 +29,12 @@ import esmj3dfo4.data.records.ALCH;
 import esmj3dfo4.data.records.AMMO;
 import esmj3dfo4.data.records.APPA;
 import esmj3dfo4.data.records.ARMO;
-import esmj3dfo4.data.records.ASPC;
 import esmj3dfo4.data.records.BOOK;
 import esmj3dfo4.data.records.CONT;
 import esmj3dfo4.data.records.DOOR;
 import esmj3dfo4.data.records.FLOR;
 import esmj3dfo4.data.records.FURN;
 import esmj3dfo4.data.records.GRAS;
-import esmj3dfo4.data.records.IDLM;
 import esmj3dfo4.data.records.INGR;
 import esmj3dfo4.data.records.KEYM;
 import esmj3dfo4.data.records.LIGH;
@@ -410,6 +407,7 @@ public class J3dREFRFactory
 		}	
 		else if (baseRecord.getRecordType().equals("LVLN"))
 		{
+			//TODO: these don't seem to appear?
 			if (!makePhys)
 			{
 				LVLN lvln = new LVLN(baseRecord);
@@ -420,6 +418,7 @@ public class J3dREFRFactory
 		}
 		else if (baseRecord.getRecordType().equals("LVLI"))
 		{
+			//TODO: these don't seem to appear?
 			LVLI lvli = new LVLI(baseRecord);
 			J3dRECODynInst j3dinst = new J3dRECODynInst(refr, false, makePhys);
 			j3dinst.setJ3dRECOType(makeLVLI(lvli, master, mediaSources));

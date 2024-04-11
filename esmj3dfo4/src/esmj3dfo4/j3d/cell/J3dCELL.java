@@ -141,15 +141,15 @@ public class J3dCELL extends J3dCELLGeneral implements UpdateListener
 			}
 			else if (record.getRecordType().equals("NAVM"))
 			{
-
+				//System.out.println("NAVM " + record.getRecordType());
 			}
 			else if (record.getRecordType().equals("PHZD"))
 			{
-
+				//System.out.println("PHZD " + record.getRecordType());
 			}
 			else if (record.getRecordType().equals("PGRE"))
 			{
-
+				//System.out.println("PGRE " + record.getRecordType());
 			}
 			else
 			{
