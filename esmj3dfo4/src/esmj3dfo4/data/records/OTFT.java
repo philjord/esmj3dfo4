@@ -8,7 +8,9 @@ import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.FormID;
 import esmj3d.data.shared.subrecords.ZString;
-
+/**
+ * https://falloutck.uesp.net/wiki/Outfit
+ */
 public class OTFT extends RECO
 {
 	public ZString EDID;
@@ -30,9 +32,9 @@ public class OTFT extends RECO
 			}
 			else if (sr.getSubrecordType().equals("INAM"))
 			{
+				byte[] inbs = new byte[4];
 				for (int fid = 0; fid < bs.length; fid += 4)
 				{
-					byte[] inbs = new byte[4];
 					System.arraycopy(bs, fid, inbs, 0, 4);
 					INAMs.add(new FormID(inbs));
 				}

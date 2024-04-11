@@ -5,7 +5,9 @@ import java.util.List;
 import esfilemanager.common.data.record.Record;
 import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.GenericSOUN;
-
+/**
+ * https://falloutck.uesp.net/wiki/Sound_Marker
+ */
 public class SOUN extends GenericSOUN
 {
 	public SOUN(Record recordData)

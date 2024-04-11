@@ -8,7 +8,9 @@ import esmj3d.data.shared.records.GenericDOOR;
 import esmj3d.data.shared.subrecords.FormID;
 import esmj3d.data.shared.subrecords.LString;
 import tools.io.ESMByteConvert;
-
+/**
+ * https://falloutck.uesp.net/wiki/Door
+ */
 public class DOOR extends GenericDOOR
 {
 	public FormID FULL2;

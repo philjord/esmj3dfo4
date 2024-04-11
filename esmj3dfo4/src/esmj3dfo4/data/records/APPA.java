@@ -8,7 +8,10 @@ import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.FormID;
 import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.data.shared.subrecords.ZString;
-
+/**
+ * NOT FOUND IN https://falloutck.uesp.net/wiki/Object_Class_List possibly delete
+ * 
+ */
 public class APPA extends RECO
 {
 	public ZString EDID;
@@ -20,7 +23,7 @@ public class APPA extends RECO
 	public APPA(Record recordData)
 	{
 		super(recordData);
-
+		System.out.println("APPA NOT FOUND IN https://falloutck.uesp.net/wiki/Object_Class_List possibly delete");
 		List<Subrecord> subrecords = recordData.getSubrecords();
 		for (int i = 0; i < subrecords.size(); i++)
 		{

@@ -6,7 +6,10 @@ import esfilemanager.common.data.record.Record;
 import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.ZString;
-
+/**
+ * NOT FOUND IN https://falloutck.uesp.net/wiki/Object_Class_List possibly delete
+ * 
+ */
 public class CPTH extends RECO
 {
 
@@ -15,6 +18,7 @@ public class CPTH extends RECO
 	public CPTH(Record recordData)
 	{
 		super(recordData);
+		System.out.println("CPTH NOT FOUND IN https://falloutck.uesp.net/wiki/Object_Class_List possibly delete");
 		List<Subrecord> subrecords = recordData.getSubrecords();
 		for (int i = 0; i < subrecords.size(); i++)
 		{

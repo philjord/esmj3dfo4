@@ -10,6 +10,9 @@ import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.data.shared.subrecords.ZString;
 import esmj3dfo4.data.subrecords.BODT;
 
+/**
+ * https://falloutck.uesp.net/wiki/ArmorAddon
+ */
 public class ARMA extends RECO
 {
 	public ZString EDID;

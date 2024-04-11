@@ -6,7 +6,9 @@ import esfilemanager.common.data.record.Record;
 import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.CommonCELL;
 import esmj3d.data.shared.subrecords.FormID;
-
+/**
+ * https://falloutck.uesp.net/wiki/Cell
+ */
 public class CELL extends CommonCELL
 {
 
@@ -106,6 +108,7 @@ public class CELL extends CommonCELL
 		}
 	}
 
+	@Override
 	public String showDetails()
 	{
 		return "CELL : (" + formId + "|" + Integer.toHexString(formId) + ") " + EDID.str;

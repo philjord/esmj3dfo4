@@ -5,7 +5,9 @@ import java.util.List;
 import esfilemanager.common.data.record.Record;
 import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.CommonWRLD;
-
+/**
+ * https://falloutck.uesp.net/wiki/WorldSpace
+ */
 public class WRLD extends CommonWRLD
 {
 
@@ -77,6 +79,7 @@ public class WRLD extends CommonWRLD
 		}
 	}
 
+	@Override
 	public String showDetails()
 	{
 		return "WRLD : (" + formId + "|" + Integer.toHexString(formId) + ") " + EDID.str;

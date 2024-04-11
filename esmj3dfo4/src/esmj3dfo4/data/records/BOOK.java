@@ -10,7 +10,9 @@ import esmj3d.data.shared.subrecords.DESC;
 import esmj3d.data.shared.subrecords.FormID;
 import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.data.shared.subrecords.ZString;
-
+/**
+ * https://falloutck.uesp.net/wiki/Book
+ */
 public class BOOK extends RECO
 {
 	public ZString EDID;
@@ -134,6 +136,7 @@ public class BOOK extends RECO
 		}
 	}
 
+	@Override
 	public String showDetails()
 	{
 		return "BOOK : (" + formId + "|" + Integer.toHexString(formId) + ") " + EDID.str + " : " + MODL.model.str;

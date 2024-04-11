@@ -9,7 +9,9 @@ import esmj3d.data.shared.subrecords.ANAM;
 import esmj3d.data.shared.subrecords.FormID;
 import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.data.shared.subrecords.ZString;
-
+/**
+ * https://falloutck.uesp.net/wiki/Ammo
+ */
 public class AMMO extends RECO
 {
 	public ZString EDID;

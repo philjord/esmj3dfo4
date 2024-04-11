@@ -9,7 +9,9 @@ import esmj3d.data.shared.subrecords.FormID;
 import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.data.shared.subrecords.ZString;
 import esmj3dfo4.data.subrecords.PFPC;
-
+/**
+ * https://falloutck.uesp.net/wiki/Flora
+ */
 public class FLOR extends RECO
 {
 	public ZString EDID;

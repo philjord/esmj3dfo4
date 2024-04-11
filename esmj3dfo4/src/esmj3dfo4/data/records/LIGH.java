@@ -11,7 +11,9 @@ import esmj3d.data.shared.subrecords.FormID;
 import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.data.shared.subrecords.ZString;
 import tools.io.ESMByteConvert;
-
+/**
+ * https://falloutck.uesp.net/wiki/Light
+ */
 public class LIGH extends CommonLIGH
 {
 	/*

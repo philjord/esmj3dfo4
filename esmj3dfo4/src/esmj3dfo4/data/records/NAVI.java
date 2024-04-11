@@ -5,13 +5,17 @@ import java.util.List;
 import esfilemanager.common.data.record.Record;
 import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.RECO;
-
+/**
+ * NOT FOUND IN https://falloutck.uesp.net/wiki/Object_Class_List possibly delete
+ * 
+ */
 public class NAVI extends RECO
 {
 
 	public NAVI(Record recordData)
 	{
 		super(recordData);
+		System.out.println("NAVI NOT FOUND IN https://falloutck.uesp.net/wiki/Object_Class_List possibly delete");
 		List<Subrecord> subrecords = recordData.getSubrecords();
 		for (int i = 0; i < subrecords.size(); i++)
 		{

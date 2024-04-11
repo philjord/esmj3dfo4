@@ -8,7 +8,9 @@ import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.FormID;
 import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.data.shared.subrecords.ZString;
-
+/**
+ * https://falloutck.uesp.net/wiki/Key
+ */
 public class KEYM extends RECO
 {
 	public ZString EDID;

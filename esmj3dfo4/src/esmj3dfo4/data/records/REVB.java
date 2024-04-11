@@ -6,7 +6,9 @@ import esfilemanager.common.data.record.Record;
 import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.ZString;
-
+/**
+ * https://falloutck.uesp.net/wiki/Reverb_Parameters
+ */
 public class REVB extends RECO
 {
 	public ZString EDID;

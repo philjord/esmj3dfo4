@@ -8,7 +8,10 @@ import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.FormID;
 import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.data.shared.subrecords.ZString;
-
+/**
+ * NOT FOUND IN https://falloutck.uesp.net/wiki/Object_Class_List possibly delete
+ * 
+ */
 public class SCRL extends RECO
 {
 	public ZString EDID;

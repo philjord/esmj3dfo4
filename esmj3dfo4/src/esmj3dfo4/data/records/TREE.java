@@ -9,7 +9,9 @@ import esmj3d.data.shared.subrecords.FormID;
 import esmj3d.data.shared.subrecords.LString;
 import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.data.shared.subrecords.ZString;
-
+/**
+ * https://falloutck.uesp.net/wiki/Tree
+ */
 public class TREE extends RECO
 {
 	public ZString EDID;
@@ -76,6 +78,7 @@ public class TREE extends RECO
 		}
 	}
 
+	@Override
 	public String showDetails()
 	{
 		return "TREE : (" + formId + "|" + Integer.toHexString(formId) + ") " + EDID.str + " : " + MODL.model.str;

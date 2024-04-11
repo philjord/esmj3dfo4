@@ -10,7 +10,9 @@ import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.data.shared.subrecords.OBND;
 import esmj3d.data.shared.subrecords.ZString;
 import esmj3dfo4.data.shared.subrecords.KeyWords;
-
+/**
+ * https://falloutck.uesp.net/wiki/MiscItem
+ */
 public class MISC extends RECO
 {
 	public ZString EDID;
@@ -146,6 +148,7 @@ public class MISC extends RECO
 		}
 	}
 
+	@Override
 	public String showDetails()
 	{
 		return "MISC : (" + formId + "|" + Integer.toHexString(formId) + ") " + EDID.str + " : " + MODL.model.str;

@@ -6,7 +6,12 @@ import esfilemanager.common.data.record.Record;
 import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.ZString;
-
+/**
+ * https://falloutck.uesp.net/wiki/Magic_Effect
+ * 
+ * also sub data of
+ * https://falloutck.uesp.net/wiki/Effect_Item
+ */
 public class MGEF extends RECO
 {
 

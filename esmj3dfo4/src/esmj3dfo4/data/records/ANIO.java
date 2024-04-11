@@ -8,6 +8,9 @@ import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.data.shared.subrecords.ZString;
 
+/**
+ * https://falloutck.uesp.net/wiki/AnimObject
+ */
 public class ANIO extends RECO
 {
 

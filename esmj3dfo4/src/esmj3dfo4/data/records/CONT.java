@@ -6,7 +6,9 @@ import esfilemanager.common.data.record.Record;
 import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.GenericCONT;
 import esmj3d.data.shared.subrecords.FormID;
-
+/**
+ * https://falloutck.uesp.net/wiki/Container
+ */
 public class CONT extends GenericCONT
 {
 	public FormID FULL2;

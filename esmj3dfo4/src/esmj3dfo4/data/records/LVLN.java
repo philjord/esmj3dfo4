@@ -10,7 +10,15 @@ import esmj3d.data.shared.subrecords.ZString;
 import esmj3dfo4.data.subrecords.LVLD;
 import esmj3dfo4.data.subrecords.LVLF;
 import esmj3dfo4.data.subrecords.LVLO;
-
+/**
+ * https://falloutck.uesp.net/wiki/LeveledCharacter
+ * 
+ * A Leveled Character is a LeveledItem List that will generate an NPC based on the current level of the player. 
+ * They act as templates for another NPC and should not be placed in the world. 
+ * The template NPC can be placed in the world and will use the data from the list to define itself. 
+ * You will see a generic marker in the Editor when placing the reference since the Creation Kit has no way of knowing what model to place. 
+ * This reference can have data on it as well. 
+ */
 public class LVLN extends RECO
 {
 	public ZString EDID = null;

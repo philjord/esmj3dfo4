@@ -6,7 +6,9 @@ import esfilemanager.common.data.record.Record;
 import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.ZString;
-
+/**
+ * MOVT 	Movement Type
+ */
 public class MOVT extends RECO
 {
 	public ZString EDID;

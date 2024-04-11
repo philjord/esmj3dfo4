@@ -11,6 +11,10 @@ import esmj3d.data.shared.subrecords.ZString;
 import esmj3dfo4.data.subrecords.LVLD;
 import esmj3dfo4.data.subrecords.LVLF;
 import esmj3dfo4.data.subrecords.LVLO;
+/**
+ * https://falloutck.uesp.net/wiki/LeveledSpell
+ * The leveled spell is a collection of Spells. This seems to be an unused form type within the creation kit. Its usage is unknown and may affect the game in unexpected ways. 
+ */
 
 public class LVSP extends RECO
 {

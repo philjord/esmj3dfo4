@@ -9,7 +9,25 @@ import esmj3d.data.shared.subrecords.FormID;
 import esmj3d.data.shared.subrecords.ZString;
 import esmj3dfo4.data.subrecords.BODT;
 import tools.io.ESMByteConvert;
-
+/**
+ * https://falloutck.uesp.net/wiki/Race
+ * 
+ *  ID: The ID, also referred to as Editor ID, is used by the Creation Kit to uniquely identify this record within a Data File.
+    Base Actor Values
+        Actor Value: The Actor Value to use.
+        Amount:
+    Movement
+    Specials: A list of Spells to use.
+    Flags
+    XP Value:
+    Size:
+    Flight:
+    Orientation Limits:
+    Copied Data:
+    IdleChatterMinTime:
+    IdleChatterMaxTime:
+    Keywords: A list of Keywords that signal information to other Game Systems.
+ */
 public class RACE extends RECO
 {
 	public ZString EDID = null;

@@ -9,7 +9,9 @@ import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.LString;
 import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.data.shared.subrecords.ZString;
-
+/**
+ * https://falloutck.uesp.net/wiki/BodyPartData
+ */
 public class BPTD extends RECO
 {
 	public ZString EDID = null;

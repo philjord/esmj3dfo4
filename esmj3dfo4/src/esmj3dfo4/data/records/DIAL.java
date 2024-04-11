@@ -6,7 +6,10 @@ import esfilemanager.common.data.record.Record;
 import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.ZString;
-
+/**
+ * NOT FOUND IN https://falloutck.uesp.net/wiki/Object_Class_List possibly delete
+ * 
+ */
 public class DIAL extends RECO
 {
 
@@ -15,6 +18,7 @@ public class DIAL extends RECO
 	public DIAL(Record recordData)
 	{
 		super(recordData);
+		System.out.println("DIAL NOT FOUND IN https://falloutck.uesp.net/wiki/Object_Class_List possibly delete");
 		List<Subrecord> subrecords = recordData.getSubrecords();
 		for (int i = 0; i < subrecords.size(); i++)
 		{

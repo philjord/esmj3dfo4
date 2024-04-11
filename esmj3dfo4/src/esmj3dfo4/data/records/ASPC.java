@@ -8,6 +8,8 @@ import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.ZString;
 
 /**
+ * https://falloutck.uesp.net/wiki/Acoustic_Space
+ * 
  * names like ExtInteriorFakeInteriorBrickMedium, IntGenericB, ExtInteriorFakeInteriorMetalSmall
  */
 public class ASPC extends RECO

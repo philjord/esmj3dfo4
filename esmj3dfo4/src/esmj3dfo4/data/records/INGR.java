@@ -8,7 +8,11 @@ import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.FormID;
 import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.data.shared.subrecords.ZString;
-
+/**
+ * https://falloutck.uesp.net/wiki/Ingredient
+ * 
+ * This object is depreciated, obsolete, or does not appear to be used by the game. Historically, Alchemy Ingredients were objects used to create potions at an Alchemy Lab in Skyrim. 
+ */
 public class INGR extends RECO
 {
 	public ZString EDID;
@@ -94,6 +98,7 @@ public class INGR extends RECO
 		}
 	}
 
+	@Override
 	public String showDetails()
 	{
 		return "STAT : (" + formId + "|" + Integer.toHexString(formId) + ") " + EDID.str + " : " + MODL.model.str;

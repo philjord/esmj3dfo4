@@ -10,7 +10,10 @@ import esmj3d.data.shared.subrecords.XESP;
 import esmj3d.data.shared.subrecords.ZString;
 import esmj3dfo4.data.subrecords.XRGD;
 import tools.io.ESMByteConvert;
-
+/**
+ * just like a REFR but for NPC_ https://falloutck.uesp.net/wiki/Object_Class_List possibly delete
+ * 
+ */
 public class ACHR extends InstRECO
 {
 	public ZString EDID = null;
@@ -27,8 +30,8 @@ public class ACHR extends InstRECO
 
 	public ACHR(Record recordData)
 	{
-
 		super(recordData);
+		
 		List<Subrecord> subrecords = recordData.getSubrecords();
 		for (int i = 0; i < subrecords.size(); i++)
 		{

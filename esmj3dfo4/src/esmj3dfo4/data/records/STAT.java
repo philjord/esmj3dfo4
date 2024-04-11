@@ -10,7 +10,9 @@ import esmj3d.data.shared.subrecords.MODS;
 import esmj3d.data.shared.subrecords.MODT;
 import esmj3d.data.shared.subrecords.OBND;
 import esmj3d.data.shared.subrecords.ZString;
-
+/**
+ * https://falloutck.uesp.net/wiki/Static
+ */
 public class STAT extends RECO
 {
 	public ZString EDID;
@@ -112,6 +114,7 @@ public class STAT extends RECO
 		}
 	}
 
+	@Override
 	public String showDetails()
 	{
 		return "STAT : (" + formId + "|" + Integer.toHexString(formId) + ") " + EDID.str + " : " + MODL.model.str;

@@ -14,7 +14,9 @@ import esmj3dfo4.data.shared.subrecords.KeyWords;
 import esmj3dfo4.data.subrecords.ACBS;
 import esmj3dfo4.data.subrecords.AIDT;
 import esmj3dfo4.data.subrecords.SNAM;
-
+/**
+ * https://falloutck.uesp.net/wiki/Actor
+ */
 public class NPC_ extends RECO
 {
 	public ZString EDID = null;
@@ -353,8 +355,50 @@ public class NPC_ extends RECO
 			{
 
 			}
-			
+			else if (sr.getSubrecordType().equals("TETI"))
+			{
 
+			}
+			else if (sr.getSubrecordType().equals("TEND"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("MRSV"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("FMIN"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("TPTA"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("PRPS"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("NAM4"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("MWGT"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("MSDK"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("MSDV"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("APPR"))
+			{
+
+			}
 			else
 			{
 				System.out.println("unhandled : " + sr.getSubrecordType() + " in record " + recordData + " in " + this);

@@ -8,7 +8,9 @@ import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.FormID;
 import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.data.shared.subrecords.ZString;
-
+/**
+ * https://falloutck.uesp.net/wiki/Weapon
+ */
 public class WEAP extends RECO
 {
 	public ZString EDID;
@@ -218,6 +220,7 @@ public class WEAP extends RECO
 		}
 	}
 
+	@Override
 	public String showDetails()
 	{
 		return "STAT : (" + formId + "|" + Integer.toHexString(formId) + ") " + EDID.str + " : " + MODL.model.str;

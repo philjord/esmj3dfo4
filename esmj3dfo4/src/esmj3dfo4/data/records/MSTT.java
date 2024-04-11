@@ -7,7 +7,9 @@ import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.data.shared.subrecords.ZString;
-
+/**
+ * https://falloutck.uesp.net/wiki/MovableStatic
+ */
 public class MSTT extends RECO
 {
 	public ZString EDID;
@@ -116,6 +118,7 @@ public class MSTT extends RECO
 		}
 	}
 
+	@Override
 	public String showDetails()
 	{
 		return "STAT : (" + formId + "|" + Integer.toHexString(formId) + ") " + EDID.str + " : " + MODL.model.str;

@@ -9,7 +9,6 @@ import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.MODL;
 import esmj3d.j3d.BethRenderSettings;
 import esmj3d.j3d.LODNif;
-import esmj3d.j3d.j3drecords.inst.J3dRECOChaInst;
 import esmj3d.j3d.j3drecords.inst.J3dRECODynInst;
 import esmj3d.j3d.j3drecords.inst.J3dRECOInst;
 import esmj3d.j3d.j3drecords.inst.J3dRECOStatInst;
@@ -35,7 +34,6 @@ import esmj3dfo4.data.records.DOOR;
 import esmj3dfo4.data.records.FLOR;
 import esmj3dfo4.data.records.FURN;
 import esmj3dfo4.data.records.GRAS;
-import esmj3dfo4.data.records.INGR;
 import esmj3dfo4.data.records.KEYM;
 import esmj3dfo4.data.records.LIGH;
 import esmj3dfo4.data.records.LVLI;
@@ -190,6 +188,10 @@ public class J3dREFRFactory
 
 	public static J3dRECOInst makeJ3DRefer(REFR refr, boolean makePhys, IRecordStore master, MediaSources mediaSources)
 	{
+		// list of object tpes
+		//https://falloutck.uesp.net/wiki/Object_Class_List
+		
+		
 		boolean outputModelNames = false;
 		// does a parent enablage flag exists, and is is defaulted to off?
 		if (refr.xesp != null && CommonREFR.getParentEnable(refr, master) != BethRenderSettings.isFlipParentEnableDefault())
@@ -326,11 +328,12 @@ public class J3dREFRFactory
 			WEAP weap = new WEAP(baseRecord);
 			return makeJ3dRECODynInst(refr, weap, weap.MODL, makePhys, mediaSources);
 		}
-		else if (baseRecord.getRecordType().equals("INGR"))
+		/*deprecated?
+		 * else if (baseRecord.getRecordType().equals("INGR"))
 		{
 			INGR ingr = new INGR(baseRecord);
 			return makeJ3dRECODynInst(refr, ingr, ingr.MODL, makePhys, mediaSources);
-		}
+		}*/
 		else if (baseRecord.getRecordType().equals("FLOR"))
 		{
 			FLOR flor = new FLOR(baseRecord);
@@ -400,29 +403,19 @@ public class J3dREFRFactory
 		}
 		else if (baseRecord.getRecordType().equals("BNDS"))
 		{
-			//Bounds maybe? lots
-			// why no BNDS object?
+			//https://falloutck.uesp.net/wiki/BendableSpline 
 			//BNDS bnds = new BNDS(baseRecord);
 			//System.out.println("BNDS type refer seen");
 		}	
 		else if (baseRecord.getRecordType().equals("LVLN"))
 		{
-			//TODO: these don't seem to appear?
-			if (!makePhys)
-			{
-				LVLN lvln = new LVLN(baseRecord);
-				J3dRECOChaInst j3dinst = new J3dRECOChaInst(refr);
-				j3dinst.setJ3dRECOType(makeLVLN(lvln, master, mediaSources));
-				return j3dinst;
-			}
+			//A Leveled Character is a LeveledItem List that will generate an NPC based on the current level of the player. 
+			//They act as templates for another NPC and should not be placed in the world. 			
 		}
 		else if (baseRecord.getRecordType().equals("LVLI"))
 		{
-			//TODO: these don't seem to appear?
-			LVLI lvli = new LVLI(baseRecord);
-			J3dRECODynInst j3dinst = new J3dRECODynInst(refr, false, makePhys);
-			j3dinst.setJ3dRECOType(makeLVLI(lvli, master, mediaSources));
-			return j3dinst;
+			//A Leveled Item is a list that will generate one or more items based on the current level of the player. 
+			//Leveled Item objects cannot be placed in the world directly. 
 		}
 		else
 		{
@@ -433,15 +426,7 @@ public class J3dREFRFactory
 
 	}
 
-	/** TODO: Note does not bother with teh ACRE or ACHR system
-	 * 
-	 * @param lvlc
-	 * @param master
-	 * @param meshSource
-	 * @param textureSource
-	 * @param soundSource
-	 * @return
-	 */
+	//Note does not bother with the ACRE or ACHR system	 
 	protected static J3dRECOTypeCha makeLVLN(LVLN lvln, IRecordStore master, MediaSources mediaSources)
 	{
 

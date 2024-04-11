@@ -8,7 +8,12 @@ import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.ZString;
 import esmj3dfo4.data.subrecords.DNAM;
 /**
- * NPCSmokeIdleMarker, NPCHandsUpIdleMarker
+ * https://falloutck.uesp.net/wiki/IdleMarker
+ * An IdleMarker allows you to specify how an Actor should behave when they reach a specific area. 
+ * These IdleMarkers can represent specific animations such as SweepIdleMarker or CounterLeanMarker, 
+ * or allow the Actor to choose randomly from among a set of potential animations such as PatrolIdleMarker, 
+ * which includes a set of ten animations like shifting weight or swatting flies. 
+ * Actors will ignore any animations they can't use. The IdleMarker object is found within the Object Window under the Miscellaneous Category. 
  */
 public class IDLM extends RECO
 {

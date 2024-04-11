@@ -7,6 +7,9 @@ import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.ZString;
 
+/**
+ * https://falloutck.uesp.net/wiki/Actor_Action
+ */
 public class AACT extends RECO
 {
 	public ZString EDID;
