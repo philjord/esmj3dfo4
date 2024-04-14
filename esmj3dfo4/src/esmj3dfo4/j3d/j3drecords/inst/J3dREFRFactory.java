@@ -26,7 +26,6 @@ import esmj3dfo4.data.records.ACTI;
 import esmj3dfo4.data.records.ADDN;
 import esmj3dfo4.data.records.ALCH;
 import esmj3dfo4.data.records.AMMO;
-import esmj3dfo4.data.records.APPA;
 import esmj3dfo4.data.records.ARMO;
 import esmj3dfo4.data.records.BOOK;
 import esmj3dfo4.data.records.CONT;
@@ -43,7 +42,6 @@ import esmj3dfo4.data.records.MSTT;
 import esmj3dfo4.data.records.NPC_;
 import esmj3dfo4.data.records.REFR;
 import esmj3dfo4.data.records.SCOL;
-import esmj3dfo4.data.records.SLGM;
 import esmj3dfo4.data.records.SOUN;
 import esmj3dfo4.data.records.STAT;
 import esmj3dfo4.data.records.TACT;
@@ -366,20 +364,6 @@ public class J3dREFRFactory
 				return new J3dRECOStatInst(refr, new J3dGeneralSOUN(soun, master, mediaSources), false, makePhys);
 			}
 		}	
-		else if (baseRecord.getRecordType().equals("APPA"))
-		{
-			// apparatus from old games? not see a lot of these
-			APPA appa = new APPA(baseRecord);
-			//return makeJ3dRECOInstFader(refr, appa, appa.MODL.model, makePhys, mediaSources);
-			System.out.println("appa.MODL " + appa + " " + appa.MODL.model.str);
-			return null;
-		}
-		else if (baseRecord.getRecordType().equals("SLGM"))
-		{			
-			//do these even exist? not seeign a lot, arent these sigil stones?
-			SLGM slgm = new SLGM(baseRecord);
-			System.out.println("slgm.MODL " + slgm + " " + slgm.MODL.model.str);
-		}
 		else if (baseRecord.getRecordType().equals("ASPC"))
 		{
 			//weird things like intgenericB?

@@ -6,6 +6,7 @@ import esfilemanager.common.data.record.Record;
 import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.FormID;
+import esmj3d.data.shared.subrecords.LString;
 import esmj3d.data.shared.subrecords.ZString;
 import esmj3dfo4.data.subrecords.BODT;
 import tools.io.ESMByteConvert;
@@ -33,10 +34,12 @@ public class RACE extends RECO
 	public ZString EDID = null;
 
 	public FormID FULL = null;
+	
+	public LString DESC = null;
 
 	public FormID WNAM = null;
 
-	public BODT BODT = null;
+	public FormID BOD2 = null;
 
 	public ZString maleSkeleton = null;
 
@@ -60,7 +63,8 @@ public class RACE extends RECO
 			sr = next(subrecords);
 		}
 
-		//DESC = new LString(sr.getData());
+		// not an LString, lloks like one byte maybe
+		//DESC = new LString(sr.getSubrecordData());
 		sr = next(subrecords);
 
 		if (sr.getSubrecordType().equals("SPCT"))
@@ -80,16 +84,18 @@ public class RACE extends RECO
 			sr = next(subrecords);
 		}
 
-		BODT = new BODT(sr.getSubrecordData());
+		BOD2 = new FormID(sr.getSubrecordData());
 		sr = next(subrecords);
 
 		if (sr.getSubrecordType().equals("KSIZ"))
 		{
 			int kwdaCount = ESMByteConvert.extractInt(sr.getSubrecordData(), 0);
+			
+			//KWDA FormID and PRPS = kwdaCount (pairs?)
 			sr = next(subrecords);
-			//KWDA FormID * kwdaCount
+			//KWDA FormID
 			sr = next(subrecords);
-
+			sr = next(subrecords);//PRPS
 		}
 
 		//DATA
@@ -98,6 +104,7 @@ public class RACE extends RECO
 		//MNAM
 		sr = next(subrecords);
 
+		//ANAM
 		maleSkeleton = new ZString(sr.getSubrecordData());
 		sr = next(subrecords);
 
@@ -146,8 +153,8 @@ public class RACE extends RECO
 		//PNAM
 		sr = next(subrecords);
 
-		//UNAM
-		sr = next(subrecords);
+		//UNAM		not in fo4? or optional?
+		//sr = next(subrecords);
 
 		while (sr.getSubrecordType().equals("ATKD"))
 		{
@@ -176,12 +183,15 @@ public class RACE extends RECO
 		sr = next(subrecords);
 		//MODT
 		sr = next(subrecords);
+		
+		if (sr.getSubrecordType().equals("GNAM"))
+		{
+			GNAM = new FormID(sr.getSubrecordData());
+			sr = next(subrecords);
+		}
 
-		GNAM = new FormID(sr.getSubrecordData());
-		sr = next(subrecords);
-
-		//NAM2
-		sr = next(subrecords);
+		//NAM2 not in fo4? or optional?
+		//sr = next(subrecords);
 		//NAM3
 		sr = next(subrecords);
 		//MNAM
@@ -197,8 +207,7 @@ public class RACE extends RECO
 		//MODT
 		sr = next(subrecords);
 
-		//TODO: finish this off from here
-		//http://www.uesp.net/wiki/Tes5Mod:Mod_File_Format/RACE
+		 // many NAME subs
 
 	}
 }

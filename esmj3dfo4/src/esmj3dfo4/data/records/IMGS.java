@@ -7,8 +7,9 @@ import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.ZString;
 /**
- * NOT FOUND IN https://falloutck.uesp.net/wiki/Object_Class_List possibly delete
- * 
+ * Image Space
+ * not found in https://falloutck.uesp.net/wiki/Object_Class_List
+ * But in the esm file
  */
 public class IMGS extends RECO
 {
@@ -17,8 +18,7 @@ public class IMGS extends RECO
 
 	public IMGS(Record recordData)
 	{
-		super(recordData);
-		System.out.println("IMGS NOT FOUND IN https://falloutck.uesp.net/wiki/Object_Class_List possibly delete");
+		super(recordData);		
 		List<Subrecord> subrecords = recordData.getSubrecords();
 		for (int i = 0; i < subrecords.size(); i++)
 		{

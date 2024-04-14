@@ -5,7 +5,6 @@ import java.util.List;
 
 import esfilemanager.common.data.record.IRecordStore;
 import esfilemanager.common.data.record.Record;
-import esmj3d.data.shared.records.LAND;
 import esmj3d.data.shared.records.LTEX;
 import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.records.TXST;
@@ -40,7 +39,7 @@ public class RecordToRECO
 				}
 				else if (record.getRecordType().equals("LAND"))
 				{
-					LAND land = new LAND(record);
+					//LAND land = new LAND(record);
 
 				}
 				else if (record.getRecordType().equals("PGRD"))
@@ -191,10 +190,6 @@ public class RecordToRECO
 		{
 			return new HDPT(baseRecord);
 		}
-		else if (baseRecord.getRecordType().equals("EYES"))
-		{
-			return new EYES(baseRecord);
-		}
 		else if (baseRecord.getRecordType().equals("RACE"))
 		{
 			return new RACE(baseRecord);
@@ -222,10 +217,6 @@ public class RecordToRECO
 		else if (baseRecord.getRecordType().equals("SPEL"))
 		{
 			return new SPEL(baseRecord);
-		}
-		else if (baseRecord.getRecordType().equals("SCRL"))
-		{
-			return new SCRL(baseRecord);
 		}
 		else if (baseRecord.getRecordType().equals("ACTI"))
 		{
@@ -262,10 +253,6 @@ public class RecordToRECO
 		else if (baseRecord.getRecordType().equals("MISC"))
 		{
 			return new MISC(baseRecord);
-		}
-		else if (baseRecord.getRecordType().equals("APPA"))
-		{
-			return new APPA(baseRecord);
 		}
 		else if (baseRecord.getRecordType().equals("STAT"))
 		{
@@ -323,10 +310,6 @@ public class RecordToRECO
 		{
 			return new HAZD(baseRecord);
 		}
-		else if (baseRecord.getRecordType().equals("SLGM"))
-		{
-			return new SLGM(baseRecord);
-		}
 		else if (baseRecord.getRecordType().equals("WTHR"))
 		{
 			return new WTHR(baseRecord);
@@ -350,10 +333,6 @@ public class RecordToRECO
 		else if (baseRecord.getRecordType().equals("NAVI"))
 		{
 			return new NAVI(baseRecord);
-		}
-		else if (baseRecord.getRecordType().equals("DIAL"))
-		{
-			return new DIAL(baseRecord);
 		}
 		else if (baseRecord.getRecordType().equals("QUST"))
 		{
@@ -499,10 +478,6 @@ public class RecordToRECO
 		{
 			return new SMEN(baseRecord);
 		}
-		else if (baseRecord.getRecordType().equals("DLBR"))
-		{
-			return new DLBR(baseRecord);
-		}
 		else if (baseRecord.getRecordType().equals("MUST"))
 		{
 			return new MUST(baseRecord);
@@ -511,14 +486,6 @@ public class RecordToRECO
 		{
 			return new DLVW(baseRecord);
 		}
-		else if (baseRecord.getRecordType().equals("WOOP"))
-		{
-			return new WOOP(baseRecord);
-		}
-		else if (baseRecord.getRecordType().equals("SHOU"))
-		{
-			return new SHOU(baseRecord);
-		}
 		else if (baseRecord.getRecordType().equals("EQUP"))
 		{
 			return new EQUP(baseRecord);
@@ -526,10 +493,6 @@ public class RecordToRECO
 		else if (baseRecord.getRecordType().equals("RELA"))
 		{
 			return new RELA(baseRecord);
-		}
-		else if (baseRecord.getRecordType().equals("SCEN"))
-		{
-			return new SCEN(baseRecord);
 		}
 		else if (baseRecord.getRecordType().equals("ASTP"))
 		{
@@ -562,10 +525,6 @@ public class RecordToRECO
 		else if (baseRecord.getRecordType().equals("SNCT"))
 		{
 			return new SNCT(baseRecord);
-		}
-		else if (baseRecord.getRecordType().equals("SOPM"))
-		{
-			return new S_PM(baseRecord);
 		}
 		else if (baseRecord.getRecordType().equals("COLL"))
 		{

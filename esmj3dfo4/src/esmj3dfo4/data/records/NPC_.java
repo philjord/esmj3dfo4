@@ -399,6 +399,29 @@ public class NPC_ extends RECO
 			{
 
 			}
+			else if (sr.getSubrecordType().equals("LTPT"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("LTPC"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("OBTE"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("OBTF"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("OBTS"))
+			{
+
+			}else if (sr.getSubrecordType().equals("STOP"))
+			{
+
+			}
 			else
 			{
 				System.out.println("unhandled : " + sr.getSubrecordType() + " in record " + recordData + " in " + this);

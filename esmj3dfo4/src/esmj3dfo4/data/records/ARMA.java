@@ -155,7 +155,27 @@ public class ARMA extends RECO
 			{
 				ONAM = new FormID(bs);
 			}
+			else if (sr.getSubrecordType().equals("MO2F"))
+			{
+				
+			}
+			else if (sr.getSubrecordType().equals("MO3F"))
+			{
 
+			}
+			else if (sr.getSubrecordType().equals("BSMP"))
+			{
+
+			}			
+			else if (sr.getSubrecordType().equals("BSMB"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("BSMS"))
+			{
+
+			}		
+			
 			else
 			{
 				System.out.println("unhandled : " + sr.getSubrecordType() + " in record " + recordData + " in " + this);

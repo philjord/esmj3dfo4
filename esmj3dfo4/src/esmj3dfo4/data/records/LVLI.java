@@ -71,6 +71,18 @@ public class LVLI extends RECO
 			{
 
 			}
+			else if (sr.getSubrecordType().equals("LVLM"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("LLKC"))
+			{
+
+			}
+			else if (sr.getSubrecordType().equals("LVSG"))
+			{
+
+			}
 			else
 			{
 				System.out.println("unhandled : " + sr.getSubrecordType() + " in record " + recordData + " in " + this);

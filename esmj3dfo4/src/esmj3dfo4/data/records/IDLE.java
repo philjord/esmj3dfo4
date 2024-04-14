@@ -7,8 +7,9 @@ import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.ZString;
 /**
- * NOT FOUND IN https://falloutck.uesp.net/wiki/Object_Class_List possibly delete
- * 
+ * Idle animations
+ * not found in https://falloutck.uesp.net/wiki/Object_Class_List
+ * But in the esm file
  */
 public class IDLE extends RECO
 {
@@ -16,8 +17,7 @@ public class IDLE extends RECO
 
 	public IDLE(Record recordData)
 	{
-		super(recordData);
-		System.out.println("IDLE NOT FOUND IN https://falloutck.uesp.net/wiki/Object_Class_List possibly delete");
+		super(recordData);		
 		List<Subrecord> subrecords = recordData.getSubrecords();
 		for (int i = 0; i < subrecords.size(); i++)
 		{

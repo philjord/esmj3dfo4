@@ -75,6 +75,9 @@ public class LVLN extends RECO
 			}else if (sr.getSubrecordType().equals("MODT"))
 			{
 
+			}else if (sr.getSubrecordType().equals("LVLM"))
+			{
+
 			}
 			else
 			{

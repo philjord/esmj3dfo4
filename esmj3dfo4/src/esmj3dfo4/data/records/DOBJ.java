@@ -7,8 +7,9 @@ import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.ZString;
 /**
- * NOT FOUND IN https://falloutck.uesp.net/wiki/Object_Class_List possibly delete
- * 
+ * Default Object Manager
+ * not found in https://falloutck.uesp.net/wiki/Object_Class_List
+ * But in the esm file
  */
 public class DOBJ extends RECO
 {
@@ -18,7 +19,6 @@ public class DOBJ extends RECO
 	public DOBJ(Record recordData)
 	{
 		super(recordData);
-		System.out.println("DOBJ NOT FOUND IN https://falloutck.uesp.net/wiki/Object_Class_List possibly delete");
 		List<Subrecord> subrecords = recordData.getSubrecords();
 		for (int i = 0; i < subrecords.size(); i++)
 		{

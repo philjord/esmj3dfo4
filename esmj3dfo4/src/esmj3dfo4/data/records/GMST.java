@@ -7,7 +7,9 @@ import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.ZString;
 /**
- * NOT FOUND IN https://falloutck.uesp.net/wiki/Object_Class_List possibly delete
+ * Game Setting
+ * not found in https://falloutck.uesp.net/wiki/Object_Class_List
+ * But in the esm file
  * 
  */
 public class GMST extends RECO
@@ -17,8 +19,7 @@ public class GMST extends RECO
 
 	public GMST(Record recordData)
 	{
-		super(recordData);
-		System.out.println("GMST NOT FOUND IN https://falloutck.uesp.net/wiki/Object_Class_List possibly delete");
+		super(recordData);		
 		List<Subrecord> subrecords = recordData.getSubrecords();
 		for (int i = 0; i < subrecords.size(); i++)
 		{

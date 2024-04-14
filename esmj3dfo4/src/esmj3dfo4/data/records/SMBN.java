@@ -7,8 +7,9 @@ import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.ZString;
 /**
- * NOT FOUND IN https://falloutck.uesp.net/wiki/Object_Class_List possibly delete
- * 
+ * Story Manager Branch Mode
+ * not found in https://falloutck.uesp.net/wiki/Object_Class_List
+ * But in the esm file
  */
 public class SMBN extends RECO
 {

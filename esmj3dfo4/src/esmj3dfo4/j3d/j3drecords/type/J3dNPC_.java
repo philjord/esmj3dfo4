@@ -2,6 +2,7 @@ package esmj3dfo4.j3d.j3drecords.type;
 
 import java.util.ArrayList;
 
+import org.jogamp.java3d.utils.shader.Cube;
 import org.jogamp.vecmath.Color3f;
 
 import esfilemanager.common.data.record.IRecordStore;
@@ -20,6 +21,7 @@ import esmj3dfo4.data.records.RACE;
 import esmj3dfo4.data.records.WEAP;
 import esmj3dfo4.data.subrecords.LVLO;
 import nif.character.NifCharacter;
+import nif.character.NifJ3dSkeletonRoot;
 import tools3d.utils.scenegraph.Fadable;
 import utils.ESConfig;
 import utils.source.MediaSources;
@@ -29,6 +31,8 @@ public class J3dNPC_ extends J3dRECOTypeCha
 	private String helmetStr = null;
 
 	private String headStr = null;
+	
+	private String headBackStr = null;
 
 	private String eyesStr = null;
 
@@ -36,7 +40,7 @@ public class J3dNPC_ extends J3dRECOTypeCha
 
 	private String handsStr = null;
 
-	private String feetStr = null;
+	//private String feetStr = null;
 
 	private String weapStr = null;
 
@@ -49,7 +53,7 @@ public class J3dNPC_ extends J3dRECOTypeCha
 		super(npc_, false);
 		
 		//TODO: NPC_ very much disabled
-		if(true)return;
+		//if(true)return;
 
 		female = npc_.ACBS.isFemale();
 
@@ -62,32 +66,27 @@ public class J3dNPC_ extends J3dRECOTypeCha
 			//BPTD bptd = new BPTD(master.getRecord(race.GNAM.formId));
 			if (female)
 			{
-				headStr = headStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\character assets\\femalehead.nif" : headStr;
-				//All beast races are just humans with a different texture
-				bodyStr = bodyStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\character assets\\femalebody_0.nif" : bodyStr;
-				handsStr = handsStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\character assets\\femalehands_0.nif" : handsStr;
-				feetStr = feetStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\character assets\\femalefeet_0.nif" : feetStr;
-				eyesStr = eyesStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\character assets\\eyesfemale.nif" : eyesStr;
-				helmetStr = helmetStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\character assets\\hair\\female\\hair01.nif"
+				headStr = headStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\basefemalehead.nif" : headStr;
+				headBackStr = headBackStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\FaceParts\\femaleheadrear.nif" : headBackStr;
+				bodyStr = bodyStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\femalebody.nif" : bodyStr;
+				handsStr = handsStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\femalehands.nif" : handsStr;
+				//feetStr = feetStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\femalefeet.nif" : feetStr;
+				eyesStr = eyesStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\FaceParts\\femaleeyes.nif" : eyesStr;
+				helmetStr = helmetStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\hair\\female\\femalehair01.nif"
 						: helmetStr;
 			}
 			else
 			{
-				headStr = headStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\character assets\\malehead.nif" : headStr;
-				//All beast races are just humans with a different texture
-				bodyStr = bodyStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\character assets\\malebody_0.nif" : bodyStr;
-				handsStr = handsStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\character assets\\malehands_0.nif" : handsStr;
-				feetStr = feetStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\character assets\\malefeet_0.nif" : feetStr;
-				eyesStr = eyesStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\character assets\\eyesmale.nif" : eyesStr;
-				helmetStr = helmetStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\character assets\\hair\\male\\hair01.nif"
+				headStr = headStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\basemalehead.nif" : headStr;
+				headBackStr = headBackStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\FaceParts\\maleheadrear.nif" : headBackStr;
+				bodyStr = bodyStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\malebody.nif" : bodyStr;
+				handsStr = handsStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\malehands.nif" : handsStr;
+				//feetStr = feetStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\malefeet.nif" : feetStr;
+				eyesStr = eyesStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\FaceParts\\maleeyes.nif" : eyesStr;
+				helmetStr = helmetStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\hair\\male\\hair01.nif"
 						: helmetStr;
 			}
 
-			// ok cool, humans have a special bunch of cock aroundy stuff
-			// monsters have a skeleton dir, inside that is some body nifs
-			// down one and up animations is mt_idle.kf
-
-			//String skeletonNifFile =  ESConfig.TES_MESH_PATH + "actors\\character\\character assets female\\skeleton_female.nif";
 
 			String skeletonNifFile = ESConfig.TES_MESH_PATH + (female ? race.femaleSkeleton.str : race.maleSkeleton.str);//"actors\\character\\character assets female\\skeleton_female.nif";
 
@@ -96,9 +95,10 @@ public class J3dNPC_ extends J3dRECOTypeCha
 			fileNames.add(headStr);
 			//fileNames.add(eyesStr);//freaky foot level eyes
 			fileNames.add(helmetStr);
+			fileNames.add(headBackStr);
 			fileNames.add(bodyStr);
 			fileNames.add(handsStr);
-			fileNames.add(feetStr);
+			//fileNames.add(feetStr);
 			fileNames.add(weapStr);
 
 			ArrayList<String> idleAnimations = new ArrayList<String>();
@@ -109,6 +109,9 @@ public class J3dNPC_ extends J3dRECOTypeCha
 
 			nifCharacter = new NifCharacter(skeletonNifFile, fileNames, mediaSources, idleAnimations);
 			addChild(nifCharacter);
+			
+			NifJ3dSkeletonRoot.showBoneMarkers = true;
+			addChild(new Cube(0.1,0.1,0.1));
 			
 			setOutline(new Color3f(1.0f, 1.0f, 0f));
 			if (!BethRenderSettings.isOutlineChars())
@@ -277,10 +280,11 @@ public class J3dNPC_ extends J3dRECOTypeCha
 			nifStr = arma.MOD3.model.str;
 		}
 
-		helmetStr = arma.BODT.isHair() ? nifStr : helmetStr;
-		bodyStr = arma.BODT.isBody() ? nifStr : bodyStr;
-		handsStr = arma.BODT.isHand() ? nifStr : handsStr;
-		feetStr = arma.BODT.isHand() ? nifStr : feetStr;
+		//FIXME: these are gone
+		//helmetStr = arma.BODT.isHair() ? nifStr : helmetStr;
+		//bodyStr = arma.BODT.isBody() ? nifStr : bodyStr;
+		//handsStr = arma.BODT.isHand() ? nifStr : handsStr;
+		//feetStr = arma.BODT.isHand() ? nifStr : feetStr;
 
 		//System.out.println("ARMO " + nifStr);
 	}
