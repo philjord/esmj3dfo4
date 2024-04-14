@@ -22,6 +22,7 @@ import esmj3dfo4.data.records.WEAP;
 import esmj3dfo4.data.subrecords.LVLO;
 import nif.character.NifCharacter;
 import nif.character.NifJ3dSkeletonRoot;
+import nif.j3d.J3dNiSkinInstance;
 import tools3d.utils.scenegraph.Fadable;
 import utils.ESConfig;
 import utils.source.MediaSources;
@@ -111,6 +112,7 @@ public class J3dNPC_ extends J3dRECOTypeCha
 			addChild(nifCharacter);
 			
 			NifJ3dSkeletonRoot.showBoneMarkers = true;
+			J3dNiSkinInstance.showSkinBoneMarkers = true;
 			addChild(new Cube(0.1,0.1,0.1));
 			
 			setOutline(new Color3f(1.0f, 1.0f, 0f));

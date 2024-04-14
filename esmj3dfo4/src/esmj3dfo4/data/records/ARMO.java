@@ -162,6 +162,9 @@ public class ARMO extends RECO
 			else if (sr.getSubrecordType().equals("OBTF"))
 			{
 				// new
+			}else if (sr.getSubrecordType().equals("DAMA"))
+			{
+				// new
 			}
 			else
 			{
