@@ -29,172 +29,96 @@ public class TERM extends RECO
 			Subrecord sr = subrecords.get(i);
 			byte[] bs = sr.getSubrecordData();
 
-			if (sr.getSubrecordType().equals("EDID"))
-			{
+			if (sr.getSubrecordType().equals("EDID")) {
 				EDID = new ZString(bs);
-			}
-			else if (sr.getSubrecordType().equals("FULL"))
-			{
+			} else if (sr.getSubrecordType().equals("FULL")) {
 				FULL = new LString(bs);
-			}
-			else if (sr.getSubrecordType().equals("MODL"))
-			{
+			} else if (sr.getSubrecordType().equals("MODL")) {
 				MODL = new MODL(bs);
 			}
-
-			else if (sr.getSubrecordType().equals("MODT"))
-			{
+			else if (sr.getSubrecordType().equals("MODT")) {
 				MODL.addMODTSub(bs);
-			}
-			else if (sr.getSubrecordType().equals("SNAM"))
-			{
+			} else if (sr.getSubrecordType().equals("SNAM")) {
 
-			}
-			else if (sr.getSubrecordType().equals("RNAM"))
-			{
+			} else if (sr.getSubrecordType().equals("RNAM")) {
 
-			}
-			else if (sr.getSubrecordType().equals("OBND"))
-			{
+			} else if (sr.getSubrecordType().equals("OBND")) {
 
-			}
-			else if (sr.getSubrecordType().equals("DNAM"))
-			{
+			} else if (sr.getSubrecordType().equals("DNAM")) {
 
-			}
-			else if (sr.getSubrecordType().equals("PNAM"))
-			{
+			} else if (sr.getSubrecordType().equals("PNAM")) {
 
-			}
-			else if (sr.getSubrecordType().equals("ANAM"))
-			{
+			} else if (sr.getSubrecordType().equals("ANAM")) {
 
-			}
-			else if (sr.getSubrecordType().equals("DESC"))
-			{
+			} else if (sr.getSubrecordType().equals("DESC")) {
 
-			}
-			else if (sr.getSubrecordType().equals("SCHR"))
-			{
+			} else if (sr.getSubrecordType().equals("SCHR")) {
 
-			}
-			else if (sr.getSubrecordType().equals("ITXT"))
-			{
+			} else if (sr.getSubrecordType().equals("ITXT")) {
 
-			}
-			else if (sr.getSubrecordType().equals("INAM"))
-			{
+			} else if (sr.getSubrecordType().equals("INAM")) {
 
-			}
-			else if (sr.getSubrecordType().equals("CTDA"))
-			{
+			} else if (sr.getSubrecordType().equals("CTDA")) {
 
-			}
-			else if (sr.getSubrecordType().equals("TNAM"))
-			{
+			} else if (sr.getSubrecordType().equals("TNAM")) {
 
-			}
-			else if (sr.getSubrecordType().equals("SCDA"))
-			{
+			} else if (sr.getSubrecordType().equals("SCDA")) {
 
-			}
-			else if (sr.getSubrecordType().equals("SCTX"))
-			{
+			} else if (sr.getSubrecordType().equals("SCTX")) {
 
-			}
-			else if (sr.getSubrecordType().equals("SCRO"))
-			{
+			} else if (sr.getSubrecordType().equals("SCRO")) {
 
-			}
-			else if (sr.getSubrecordType().equals("SCRI"))
-			{
+			} else if (sr.getSubrecordType().equals("SCRI")) {
 
-			}
-			else if (sr.getSubrecordType().equals("SCRV"))
-			{
+			} else if (sr.getSubrecordType().equals("SCRV")) {
 
-			}
-			else if (sr.getSubrecordType().equals("SCVR"))
-			{
+			} else if (sr.getSubrecordType().equals("SCVR")) {
 
-			}
-			else if (sr.getSubrecordType().equals("SLSD"))
-			{
+			} else if (sr.getSubrecordType().equals("SLSD")) {
 
 			}
 			//FALLOUTNV only ////////////////////////////
-			else if (sr.getSubrecordType().equals("MODS"))
-			{
+			else if (sr.getSubrecordType().equals("MODS")) {
 
-			}
-			else if (sr.getSubrecordType().equals("WNAM"))
-			{
+			} else if (sr.getSubrecordType().equals("WNAM")) {
 				// new
-			}
-			else if (sr.getSubrecordType().equals("KSIZ"))
-			{
+			} else if (sr.getSubrecordType().equals("KSIZ")) {
 				// new
-			}
-			else if (sr.getSubrecordType().equals("KWDA"))
-			{
+			} else if (sr.getSubrecordType().equals("KWDA")) {
 				// new
-			}
-			else if (sr.getSubrecordType().equals("FNAM"))
-			{
+			} else if (sr.getSubrecordType().equals("FNAM")) {
 				// new
-			}
-			else if (sr.getSubrecordType().equals("COCT"))
-			{
+			} else if (sr.getSubrecordType().equals("COCT")) {
 				// new
-			}
-			else if (sr.getSubrecordType().equals("CNTO"))
-			{
+			} else if (sr.getSubrecordType().equals("CNTO")) {
 				// new
-			}
-			else if (sr.getSubrecordType().equals("MNAM"))
-			{
+			} else if (sr.getSubrecordType().equals("MNAM")) {
 				// new
-			}
-			else if (sr.getSubrecordType().equals("WNAM"))
-			{
+			} else if (sr.getSubrecordType().equals("WNAM")) {
 				// new
-			}
-			else if (sr.getSubrecordType().equals("WBDT"))
-			{
+			} else if (sr.getSubrecordType().equals("WBDT")) {
 				// new
-			}
-			else if (sr.getSubrecordType().equals("XMRK"))
-			{
+			} else if (sr.getSubrecordType().equals("XMRK")) {
 				// new
-			}
-			else if (sr.getSubrecordType().equals("BSIZ"))
-			{
+			} else if (sr.getSubrecordType().equals("BSIZ")) {
 				// new
-			}
-			else if (sr.getSubrecordType().equals("ISIZ"))
-			{
+			} else if (sr.getSubrecordType().equals("ISIZ")) {
 				// new
-			}
-			else if (sr.getSubrecordType().equals("ITID"))
-			{
+			} else if (sr.getSubrecordType().equals("ITID")) {
 				// new
-			}
-			else if (sr.getSubrecordType().equals("UNAM"))
-			{
+			} else if (sr.getSubrecordType().equals("UNAM")) {
 				// new
-			}
-			else if (sr.getSubrecordType().equals("BTXT"))
-			{
+			} else if (sr.getSubrecordType().equals("BTXT")) {
 				// FO4
-			}
-			else if (sr.getSubrecordType().equals("VMAD"))
-			{
+			} else if (sr.getSubrecordType().equals("VMAD")) {
 
-			}else if (sr.getSubrecordType().equals("NAM0"))
-			{
+			} else if (sr.getSubrecordType().equals("NAM0")) {
 
-			}
-			else
+			} else if (sr.getSubrecordType().equals("CIS1")) {
+
+			} else if (sr.getSubrecordType().equals("CIS2")) {
+
+			} else
 			{
 				System.out.println("unhandled : " + sr.getSubrecordType() + " in record " + recordData + " in " + this);
 			}
