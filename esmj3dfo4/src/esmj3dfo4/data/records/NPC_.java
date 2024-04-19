@@ -422,6 +422,10 @@ public class NPC_ extends RECO
 			{
 
 			}
+			else if (sr.getSubrecordType().equals("NTRM"))
+			{
+
+			}
 			else
 			{
 				System.out.println("unhandled : " + sr.getSubrecordType() + " in record " + recordData + " in " + this);
