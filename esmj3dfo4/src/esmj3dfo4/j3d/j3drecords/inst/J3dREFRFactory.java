@@ -61,10 +61,15 @@ public class J3dREFRFactory
 	private static J3dRECODynInst makeJ3dRECODynInst(REFR refr, RECO reco, MODL modl, boolean makePhys, MediaSources mediaSources)
 	{
 		if (modl != null)
-		{
-			J3dRECODynInst j3dinst = new J3dRECODynInst(refr, true, makePhys);
-			j3dinst.setJ3dRECOType(new J3dRECOTypeDynamic(reco, modl.model.str, makePhys, mediaSources));
-			return j3dinst;
+		{	if ((!reco.isFlagSet(RECO.IsMarker_Flag) || BethRenderSettings.isShowEditorMarkers()))
+			{
+				J3dRECODynInst j3dinst = new J3dRECODynInst(refr, true, makePhys);
+				j3dinst.setJ3dRECOType(new J3dRECOTypeDynamic(reco, modl.model.str, makePhys, mediaSources));
+				return j3dinst;
+			} else {
+				System.out.println("makeJ3dRECODynInst !reco.isFlagSet(RECO.IsMarker_Flag) " + reco);
+				return null;
+			}
 		}
 		else
 		{
@@ -77,9 +82,15 @@ public class J3dREFRFactory
 	{
 		if (modl != null)
 		{
-			J3dRECOStatInst j3dinst = new J3dRECOStatInst(refr, true, makePhys);
-			j3dinst.setJ3dRECOType(new J3dRECOTypeActionable(reco, modl.model.str, makePhys, mediaSources));
-			return j3dinst;
+			if ((!reco.isFlagSet(RECO.IsMarker_Flag) || BethRenderSettings.isShowEditorMarkers()))
+			{
+				J3dRECOStatInst j3dinst = new J3dRECOStatInst(refr, true, makePhys);
+				j3dinst.setJ3dRECOType(new J3dRECOTypeActionable(reco, modl.model.str, makePhys, mediaSources));
+				return j3dinst;
+			} else {
+				System.out.println("makeJ3dRECOActionInst !reco.isFlagSet(RECO.IsMarker_Flag) " + reco);
+				return null;
+			}
 		}
 		else
 		{
