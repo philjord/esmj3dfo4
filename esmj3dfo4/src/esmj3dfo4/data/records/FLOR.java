@@ -7,14 +7,14 @@ import esfilemanager.common.data.record.Subrecord;
 import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.FormID;
 import esmj3d.data.shared.subrecords.MODL;
-import esmj3d.data.shared.subrecords.ZString;
+
 import esmj3dfo4.data.subrecords.PFPC;
 /**
  * https://falloutck.uesp.net/wiki/Flora
  */
 public class FLOR extends RECO
 {
-	public ZString EDID;
+	
 
 	public FormID FULL;
 
@@ -39,7 +39,7 @@ public class FLOR extends RECO
 
 			if (sr.getSubrecordType().equals("EDID"))
 			{
-				EDID = new ZString(bs);
+				setEDID(bs);
 			}
 			else if (sr.getSubrecordType().equals("OBND"))
 			{
