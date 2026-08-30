@@ -211,6 +211,15 @@ public class WEAP extends RECO
 			else if (sr.getSubrecordType().equals("MASE"))
 			{
 				// FO4
+			}	else if (sr.getSubrecordType().equals("DEST"))
+			{
+				// FO4
+			}	else if (sr.getSubrecordType().equals("DSTD"))
+			{
+				// FO4
+			}	else if (sr.getSubrecordType().equals("DSTF"))
+			{
+				// FO4
 			}	
 			else
 			{

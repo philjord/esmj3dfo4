@@ -2,7 +2,6 @@ package esmj3dfo4.j3d.j3drecords.type;
 
 import java.util.ArrayList;
 
-import org.jogamp.java3d.utils.shader.Cube;
 import org.jogamp.vecmath.Color3f;
 
 import esfilemanager.common.data.record.IRecordStore;
@@ -113,7 +112,6 @@ public class J3dNPC_ extends J3dRECOTypeCha
 			
 			NifJ3dSkeletonRoot.showBoneMarkers = false;
 			J3dNiSkinInstance.showSkinBoneMarkers = false;
-			addChild(new Cube(0.1,0.1,0.1));
 			
 			setOutline(new Color3f(1.0f, 1.0f, 0f));
 			if (!BethRenderSettings.isOutlineChars())
