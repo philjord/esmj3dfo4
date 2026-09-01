@@ -8,176 +8,111 @@ import esmj3d.data.shared.records.RECO;
 import esmj3d.data.shared.subrecords.FormID;
 import esmj3d.data.shared.subrecords.MODL;
 
-import esmj3dfo4.data.subrecords.BODT;
-
 /**
  * https://falloutck.uesp.net/wiki/ArmorAddon
  */
-public class ARMA extends RECO
-{
-	
+public class ARMA extends RECO {
 
-	public FormID RNAM;
+	public FormID	RNAM;
 
-	public BODT BODT;
+	public MODL		MOD2;
 
-	public MODL MOD2;
+	public MODL		MOD3;
 
-	public MODL MOD3;
+	public MODL		MOD4;
 
-	public MODL MOD4;
+	public MODL		MOD5;
 
-	public MODL MOD5;
+	public FormID	MODL;
 
-	public FormID MODL;
+	public FormID	NAM0;
 
-	public FormID NAM0;
+	public FormID	NAM1;
 
-	public FormID NAM1;
+	public FormID	NAM2;
 
-	public FormID NAM2;
+	public FormID	NAM3;
 
-	public FormID NAM3;
+	public FormID	SNDD;
 
-	public FormID SNDD;
+	public FormID	ONAM;
 
-	public FormID ONAM;
-
-	public ARMA(Record recordData)
-	{
+	public ARMA(Record recordData) {
 
 		super(recordData);
 
 		List<Subrecord> subrecords = recordData.getSubrecords();
-		for (int i = 0; i < subrecords.size(); i++)
-		{
+		for (int i = 0; i < subrecords.size(); i++) {
 			Subrecord sr = subrecords.get(i);
 			byte[] bs = sr.getSubrecordData();
 
-			if (sr.getSubrecordType().equals("EDID"))
-			{
+			if (sr.getSubrecordType().equals("EDID")) {
 				setEDID(bs);
-			}
-			else if (sr.getSubrecordType().equals("OBND"))
-			{
-
-			}
-			else if (sr.getSubrecordType().equals("BODT"))
-			{
-				BODT = new BODT(bs);
-			}
-			else if (sr.getSubrecordType().equals("BOD2"))
-			{
-
-			}
-			else if (sr.getSubrecordType().equals("RNAM"))
-			{
+			} else if (sr.getSubrecordType().equals("BOD2")) {
+				// NOTE BOD2 is not BODT!
+			} else if (sr.getSubrecordType().equals("RNAM")) {
+				//Race: The Race that can wear this armor.
 				RNAM = new FormID(bs);
-			}
-			else if (sr.getSubrecordType().equals("DNAM"))
-			{
+			} else if (sr.getSubrecordType().equals("DNAM")) {
 
-			}
-
-			else if (sr.getSubrecordType().equals("MOD2"))
-			{
+			} else if (sr.getSubrecordType().equals("MOD2")) {
+				//Male Biped Model: The 3D model for the armor as it appears when worn. This should be positioned, rigged, and fitted for a character.
 				MOD2 = new MODL(bs);
-			}
-			else if (sr.getSubrecordType().equals("MO2T"))
-			{
+			} else if (sr.getSubrecordType().equals("MO2T")) {
+				//Skin Texture:
 				MOD2.addMODTSub(bs);
-			}
-			else if (sr.getSubrecordType().equals("MO2S"))
-			{
+			} else if (sr.getSubrecordType().equals("MO2S")) {
+				//Skin Texture Swap List:
 				MOD2.addMODSSub(bs);
-			}
-			else if (sr.getSubrecordType().equals("MOD3"))
-			{
+			} else if (sr.getSubrecordType().equals("MO2F")) {
+				//First Person: The 3D model for the armor as it appears in first-person view.
+			} else if (sr.getSubrecordType().equals("MOD3")) {
+				//Female Biped Model: The 3D model for the armor as it appears when worn. This should be positioned, rigged, and fitted for a character.
 				MOD3 = new MODL(bs);
-			}
-			else if (sr.getSubrecordType().equals("MO3T"))
-			{
+			} else if (sr.getSubrecordType().equals("MO3T")) {
 				MOD3.addMODTSub(bs);
-			}
-			else if (sr.getSubrecordType().equals("MO3S"))
-			{
+			} else if (sr.getSubrecordType().equals("MO3S")) {
 				MOD3.addMODSSub(bs);
-			}
-			else if (sr.getSubrecordType().equals("MOD4"))
-			{
+			} else if (sr.getSubrecordType().equals("MO3C")) {
+				//Priority:? optional
+			} else if (sr.getSubrecordType().equals("MO3F")) {
+
+			} else if (sr.getSubrecordType().equals("MOD4")) {
 				MOD4 = new MODL(bs);
-			}
-			else if (sr.getSubrecordType().equals("MO4T"))
-			{
+			} else if (sr.getSubrecordType().equals("MO4T")) {
 				MOD4.addMODTSub(bs);
-			}
-			else if (sr.getSubrecordType().equals("MO4S"))
-			{
+			} else if (sr.getSubrecordType().equals("MO4S")) {
 				MOD4.addMODSSub(bs);
-			}
-			else if (sr.getSubrecordType().equals("MOD5"))
-			{
+			} else if (sr.getSubrecordType().equals("MOD5")) {
 				MOD5 = new MODL(bs);
-			}
-			else if (sr.getSubrecordType().equals("MO5T"))
-			{
+			} else if (sr.getSubrecordType().equals("MO5T")) {
 				MOD5.addMODTSub(bs);
-			}
-			else if (sr.getSubrecordType().equals("MO5S"))
-			{
+			} else if (sr.getSubrecordType().equals("MO5S")) {
 				MOD5.addMODSSub(bs);
-			}
-			else if (sr.getSubrecordType().equals("NAM0"))
-			{
+			} else if (sr.getSubrecordType().equals("NAM0")) {
 				NAM0 = new FormID(bs);
-			}
-			else if (sr.getSubrecordType().equals("NAM1"))
-			{
+			} else if (sr.getSubrecordType().equals("NAM1")) {
 				NAM1 = new FormID(bs);
-			}
-			else if (sr.getSubrecordType().equals("NAM2"))
-			{
+			} else if (sr.getSubrecordType().equals("NAM2")) {
 				NAM2 = new FormID(bs);
-			}
-			else if (sr.getSubrecordType().equals("NAM3"))
-			{
-				NAM3 = new FormID(bs);
-			}
-			else if (sr.getSubrecordType().equals("MODL"))
-			{
+			} else if (sr.getSubrecordType().equals("MODL")) {
 				MODL = new FormID(bs);
-			}
-			else if (sr.getSubrecordType().equals("SNDD"))
-			{
+			} else if (sr.getSubrecordType().equals("SNDD")) {
+				//Footstep:?
+				//Detection Sound Value:?
 				SNDD = new FormID(bs);
-			}
-			else if (sr.getSubrecordType().equals("ONAM"))
-			{
+			} else if (sr.getSubrecordType().equals("BSMB")) {
+				//String, need ot takea look
+			} else if (sr.getSubrecordType().equals("BSMS")) {
+
+			} else if (sr.getSubrecordType().equals("BSMP")) {
+
+			} else if (sr.getSubrecordType().equals("ONAM")) {
+				//Visual FX (Armo?) Pointer
 				ONAM = new FormID(bs);
 			}
-			else if (sr.getSubrecordType().equals("MO2F"))
-			{
-				
-			}
-			else if (sr.getSubrecordType().equals("MO3F"))
-			{
 
-			}
-			else if (sr.getSubrecordType().equals("BSMP"))
-			{
-
-			}			
-			else if (sr.getSubrecordType().equals("BSMB"))
-			{
-
-			}
-			else if (sr.getSubrecordType().equals("BSMS"))
-			{
-
-			}		
-			
-			else
-			{
+			else {
 				System.out.println("unhandled : " + sr.getSubrecordType() + " in record " + recordData + " in " + this);
 			}
 		}

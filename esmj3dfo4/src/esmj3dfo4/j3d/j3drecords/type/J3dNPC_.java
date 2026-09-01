@@ -47,6 +47,9 @@ public class J3dNPC_ extends J3dRECOTypeCha
 	private boolean female = false;
 
 	private RACE race;
+	
+	ArrayList<String> skinFileNames = new ArrayList<String>();
+
 
 	public J3dNPC_(NPC_ npc_, IRecordStore master, MediaSources mediaSources)
 	{
@@ -274,13 +277,19 @@ public class J3dNPC_ extends J3dRECOTypeCha
 	private void addARMO(ARMO armo, IRecordStore master)
 	{
 		ARMA arma = new ARMA(master.getRecord(armo.MODL.formId));
-		String nifStr = arma.MOD2.model;
-		if (female && arma.MOD3 != null)
-		{
+		String nifStr = null;
+		if (arma.MOD2 != null)
+			nifStr = arma.MOD2.model;
+
+		if (female && arma.MOD3 != null) {
 			nifStr = arma.MOD3.model;
 		}
+		
+		//System.out.println("My cchar person has an ARMO of " + nifStr);
+		//TODO with this in the character no longer animates well
+		//skinFileNames.add(nifStr);
 
-		//FIXME: these are gone
+		//FIXME: BOD2 looks like the guy https://falloutck.uesp.net/wiki/ArmorAddon
 		//helmetStr = arma.BODT.isHair() ? nifStr : helmetStr;
 		//bodyStr = arma.BODT.isBody() ? nifStr : bodyStr;
 		//handsStr = arma.BODT.isHand() ? nifStr : handsStr;
@@ -311,8 +320,7 @@ public class J3dNPC_ extends J3dRECOTypeCha
 		ARMA arma = new ARMA(master.getRecord(skin.MODL.formId));
 		String nifStr = arma.MOD2.model;
 
-		ArrayList<String> fileNames = new ArrayList<String>();
-		fileNames.add(nifStr);
+		skinFileNames.add(nifStr);
 
 		// get animation from asset path badly
 		String assetPath = race.maleSkeleton.substring(0, race.maleSkeleton.lastIndexOf("\\"));
@@ -322,7 +330,7 @@ public class J3dNPC_ extends J3dRECOTypeCha
 		ArrayList<String> idleAnimations = new ArrayList<String>();
 		//idleAnimations.addAll(mediaSources.getMeshSource().getFilesInFolder(assetPath + "\\animations"));
 
-		nifCharacter = new NifCharacter(skeletonNifFile, fileNames, mediaSources);
+		nifCharacter = new NifCharacter(skeletonNifFile, skinFileNames, mediaSources);
 		nifCharacter.setIdleAnimations(idleAnimations);
 		addChild(nifCharacter);
 		
