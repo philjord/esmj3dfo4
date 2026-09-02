@@ -26,70 +26,69 @@ import tools3d.utils.scenegraph.Fadable;
 import utils.ESConfig;
 import utils.source.MediaSources;
 
-public class J3dNPC_ extends J3dRECOTypeCha
-{
-	private String helmetStr = null;
+public class J3dNPC_ extends J3dRECOTypeCha {
+	private String		helmetStr		= null;
 
-	private String headStr = null;
-	
-	private String headBackStr = null;
+	private String		headStr			= null;
 
-	private String eyesStr = null;
+	private String		headBackStr		= null;
 
-	private String bodyStr = null;
+	private String		eyesStr			= null;
 
-	private String handsStr = null;
+	private String		bodyStr			= null;
+
+	private String		handsStr		= null;
 
 	//private String feetStr = null;
 
-	private String weapStr = null;
+	private String		weapStr			= null;
 
-	private boolean female = false;
+	private boolean		female			= false;
 
-	private RACE race;
-	
-	ArrayList<String> skinFileNames = new ArrayList<String>();
+	private RACE		race;
 
+	ArrayList<String>	skinFileNames	= new ArrayList<String>();
 
-	public J3dNPC_(NPC_ npc_, IRecordStore master, MediaSources mediaSources)
-	{
+	public J3dNPC_(NPC_ npc_, IRecordStore master, MediaSources mediaSources) {
 		super(npc_, false);
-		
-		//TODO: NPC_ very much disabled
-		//if(true)return;
 
 		female = npc_.ACBS.isFemale();
 
 		organiseNPC_(npc_, master);
 
 		// are we a char or in fact a bit of a crea?
-		if (race.maleSkeleton.toLowerCase().indexOf("actors\\character\\") != -1)
-		{
+		if (race.maleSkeleton.toLowerCase().indexOf("actors\\character\\") != -1) {
 			// this is the start of an idea to pull body data out
 			//BPTD bptd = new BPTD(master.getRecord(race.GNAM.formId));
-			if (female)
-			{
-				headStr = headStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\basefemalehead.nif" : headStr;
-				headBackStr = headBackStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\FaceParts\\femaleheadrear.nif" : headBackStr;
-				bodyStr = bodyStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\femalebody.nif" : bodyStr;
-				handsStr = handsStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\femalehands.nif" : handsStr;
+			if (female) {
+				headStr = headStr == null ? ESConfig.TES_MESH_PATH
+											+ "actors\\character\\characterassets\\basefemalehead.nif" : headStr;
+				headBackStr = headBackStr == null ? ESConfig.TES_MESH_PATH
+													+ "actors\\character\\characterassets\\FaceParts\\femaleheadrear.nif" : headBackStr;
+				bodyStr = bodyStr == null ? ESConfig.TES_MESH_PATH
+											+ "actors\\character\\characterassets\\femalebody.nif" : bodyStr;
+				handsStr = handsStr == null ? ESConfig.TES_MESH_PATH
+												+ "actors\\character\\characterassets\\femalehands.nif" : handsStr;
 				//feetStr = feetStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\femalefeet.nif" : feetStr;
-				eyesStr = eyesStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\FaceParts\\femaleeyes.nif" : eyesStr;
-				helmetStr = helmetStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\hair\\female\\femalehair01.nif"
-						: helmetStr;
-			}
-			else
-			{
-				headStr = headStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\basemalehead.nif" : headStr;
-				headBackStr = headBackStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\FaceParts\\maleheadrear.nif" : headBackStr;
-				bodyStr = bodyStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\malebody.nif" : bodyStr;
-				handsStr = handsStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\malehands.nif" : handsStr;
+				eyesStr = eyesStr == null ? ESConfig.TES_MESH_PATH
+											+ "actors\\character\\characterassets\\FaceParts\\femaleeyes.nif" : eyesStr;
+				helmetStr = helmetStr == null ? ESConfig.TES_MESH_PATH
+												+ "actors\\character\\characterassets\\hair\\female\\femalehair01.nif" : helmetStr;
+			} else {
+				headStr = headStr == null ? ESConfig.TES_MESH_PATH
+											+ "actors\\character\\characterassets\\basemalehead.nif" : headStr;
+				headBackStr = headBackStr == null ? ESConfig.TES_MESH_PATH
+													+ "actors\\character\\characterassets\\FaceParts\\maleheadrear.nif" : headBackStr;
+				bodyStr = bodyStr == null ? ESConfig.TES_MESH_PATH
+											+ "actors\\character\\characterassets\\malebody.nif" : bodyStr;
+				handsStr = handsStr == null ? ESConfig.TES_MESH_PATH
+												+ "actors\\character\\characterassets\\malehands.nif" : handsStr;
 				//feetStr = feetStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\malefeet.nif" : feetStr;
-				eyesStr = eyesStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\FaceParts\\maleeyes.nif" : eyesStr;
-				helmetStr = helmetStr == null ? ESConfig.TES_MESH_PATH + "actors\\character\\characterassets\\hair\\male\\hair01.nif"
-						: helmetStr;
+				eyesStr = eyesStr == null ? ESConfig.TES_MESH_PATH
+											+ "actors\\character\\characterassets\\FaceParts\\maleeyes.nif" : eyesStr;
+				helmetStr = helmetStr == null ? ESConfig.TES_MESH_PATH
+												+ "actors\\character\\characterassets\\hair\\male\\hair01.nif" : helmetStr;
 			}
-
 
 			String skeletonNifFile = ESConfig.TES_MESH_PATH + (female ? race.femaleSkeleton : race.maleSkeleton);//"actors\\character\\character assets female\\skeleton_female.nif";
 
@@ -106,43 +105,37 @@ public class J3dNPC_ extends J3dRECOTypeCha
 
 			ArrayList<String> idleAnimations = new ArrayList<String>();
 			idleAnimations.add(ESConfig.TES_MESH_PATH + "actors/character/animations/posea_idle1.hkx");
- 
+
 			//addIdleAnimations( idleAnimations, mediaSources.getMeshSource().getFilesInFolder(ESConfig.TES_MESH_PATH + "actors\\character\\animations"), new String[]{"idle"});
 
 			nifCharacter = new NifCharacter(skeletonNifFile, fileNames, mediaSources);
 			nifCharacter.setIdleAnimations(idleAnimations);
 			addChild(nifCharacter);
-			
+
 			NifJ3dSkeletonRoot.showBoneMarkers = false;
 			J3dNiSkinInstance.showSkinBoneMarkers = false;
-			
+
 			setOutline(new Color3f(1.0f, 1.0f, 0f));
 			if (!BethRenderSettings.isOutlineChars())
-				((Fadable) nifCharacter).setOutline(null);
-		}
-		else
-		{
+				((Fadable)nifCharacter).setOutline(null);
+		} else {
 			j3dCREA(master, mediaSources);
 
 		}
 
 	}
 
-	private void organiseNPC_(NPC_ npc, IRecordStore master)
-	{
-		if (npc != null)
-		{
+	private void organiseNPC_(NPC_ npc, IRecordStore master) {
+		if (npc != null) {
 			race = new RACE(master.getRecord(npc.RNAM.formId));
 			//System.out.println("organiseNPC_ " + npc.EDID);
 			organiseTemplate(npc.TPLT, master);
 			organiseCNTOs(npc.CNTOs, master);
 
-			if (npc.DOFT != null)
-			{
+			if (npc.DOFT != null) {
 				Record doftRec = master.getRecord(npc.DOFT.formId);
 				OTFT otft = new OTFT(doftRec);
-				for (int i = 0; i < otft.INAMs.size(); i++)
-				{
+				for (int i = 0; i < otft.INAMs.size(); i++) {
 					Record baseRecord = master.getRecord(otft.INAMs.get(i).formId);
 					organiseItem(baseRecord, master);
 				}
@@ -152,19 +145,14 @@ public class J3dNPC_ extends J3dRECOTypeCha
 
 	}
 
-	private void organiseTemplate(FormID tplt, IRecordStore master)
-	{
-		if (tplt != null)
-		{
+	private void organiseTemplate(FormID tplt, IRecordStore master) {
+		if (tplt != null) {
 			NPC_ npcTemplate = null;
 			Record trec = master.getRecord(tplt.formId);
-			if (trec.getRecordType().equals("LVLN"))
-			{
+			if (trec.getRecordType().equals("LVLN")) {
 				LVLN lvln = new LVLN(trec);
 				npcTemplate = organiseLVLN(lvln, master);
-			}
-			else if (trec.getRecordType().equals("NPC_"))
-			{
+			} else if (trec.getRecordType().equals("NPC_")) {
 				npcTemplate = new NPC_(trec);
 			}
 			//System.out.println("template");
@@ -173,49 +161,39 @@ public class J3dNPC_ extends J3dRECOTypeCha
 
 	}
 
-	private NPC_ organiseLVLN(LVLN lvln, IRecordStore master)
-	{
+	private NPC_ organiseLVLN(LVLN lvln, IRecordStore master) {
 		// TODO: randomly picked for now
 		LVLO[] LVLOs = lvln.LVLOs;
 
-		int idx = (int) (Math.random() * LVLOs.length);
+		int idx = (int)(Math.random() * LVLOs.length);
 		idx = idx == LVLOs.length ? 0 : idx;
 
 		Record baseRecord = master.getRecord(LVLOs[idx].itemFormId);
 
-		if (baseRecord.getRecordType().equals("NPC_"))
-		{
+		if (baseRecord.getRecordType().equals("NPC_")) {
 			return new NPC_(baseRecord);
-		}
-		else if (baseRecord.getRecordType().equals("LVLN"))
-		{
+		} else if (baseRecord.getRecordType().equals("LVLN")) {
 			LVLN lvln2 = new LVLN(baseRecord);
 			return organiseLVLN(lvln2, master);
-		}
-		else
-		{
+		} else {
 			System.out.println("LVLN record type not converted to j3d " + baseRecord.getRecordType());
 			return null;
 		}
 	}
 
-	private void organiseCNTOs(ArrayList<CNTO> cntos, IRecordStore master)
-	{
-		for (int i = 0; i < cntos.size(); i++)
-		{
+	private void organiseCNTOs(ArrayList<CNTO> cntos, IRecordStore master) {
+		for (int i = 0; i < cntos.size(); i++) {
 			//	int count = cntos[i].count;
 			Record baseRecord = master.getRecord(cntos.get(i).itemFormId);
 			organiseItem(baseRecord, master);
 		}
 	}
 
-	private void organiseLVLI(LVLI lvli, IRecordStore master)
-	{
+	private void organiseLVLI(LVLI lvli, IRecordStore master) {
 		LVLO[] LVLOs = lvli.LVLOs;
 
-		if (LVLOs.length > 0)
-		{
-			int idx = (int) (Math.random() * LVLOs.length);
+		if (LVLOs.length > 0) {
+			int idx = (int)(Math.random() * LVLOs.length);
 			idx = idx == LVLOs.length ? 0 : idx;
 
 			Record baseRecord = master.getRecord(LVLOs[idx].itemFormId);
@@ -224,58 +202,31 @@ public class J3dNPC_ extends J3dRECOTypeCha
 
 	}
 
-	private void organiseItem(Record baseRecord, IRecordStore master)
-	{
-		if (baseRecord.getRecordType().equals("WEAP"))
-		{
+	private void organiseItem(Record baseRecord, IRecordStore master) {
+		if (baseRecord.getRecordType().equals("WEAP")) {
 			WEAP weap = new WEAP(baseRecord);
 			addWEAP(weap);
-		}
-		else if (baseRecord.getRecordType().equals("ARMO"))
-		{
+		} else if (baseRecord.getRecordType().equals("ARMO")) {
 			ARMO armo = new ARMO(baseRecord);
 			addARMO(armo, master);
-		}
-		else if (baseRecord.getRecordType().equals("MISC"))
-		{
-		}
-		else if (baseRecord.getRecordType().equals("AMMO"))
-		{
-		}
-		else if (baseRecord.getRecordType().equals("INGR"))
-		{
-		}
-		else if (baseRecord.getRecordType().equals("ALCH"))
-		{
-		}
-		else if (baseRecord.getRecordType().equals("SLGM"))
-		{
-		}
-		else if (baseRecord.getRecordType().equals("CMNY"))
-		{
-		}
-		else if (baseRecord.getRecordType().equals("KEYM"))
-		{
-		}
-		else if (baseRecord.getRecordType().equals("BOOK"))
-		{
-		}
-		else if (baseRecord.getRecordType().equals("LIGH"))
-		{
-		}
-		else if (baseRecord.getRecordType().equals("LVLI"))
-		{
+		} else if (baseRecord.getRecordType().equals("MISC")) {
+		} else if (baseRecord.getRecordType().equals("AMMO")) {
+		} else if (baseRecord.getRecordType().equals("INGR")) {
+		} else if (baseRecord.getRecordType().equals("ALCH")) {
+		} else if (baseRecord.getRecordType().equals("SLGM")) {
+		} else if (baseRecord.getRecordType().equals("CMNY")) {
+		} else if (baseRecord.getRecordType().equals("KEYM")) {
+		} else if (baseRecord.getRecordType().equals("BOOK")) {
+		} else if (baseRecord.getRecordType().equals("LIGH")) {
+		} else if (baseRecord.getRecordType().equals("LVLI")) {
 			LVLI lvli2 = new LVLI(baseRecord);
 			organiseLVLI(lvli2, master);
-		}
-		else
-		{
+		} else {
 			System.out.println("LVLI record type not converted to j3d " + baseRecord.getRecordType());
 		}
 	}
 
-	private void addARMO(ARMO armo, IRecordStore master)
-	{
+	private void addARMO(ARMO armo, IRecordStore master) {
 		ARMA arma = new ARMA(master.getRecord(armo.MODL.formId));
 		String nifStr = null;
 		if (arma.MOD2 != null)
@@ -284,10 +235,10 @@ public class J3dNPC_ extends J3dRECOTypeCha
 		if (female && arma.MOD3 != null) {
 			nifStr = arma.MOD3.model;
 		}
-		
-		//System.out.println("My cchar person has an ARMO of " + nifStr);
+
+		//System.out.println("J3dNPC_ has an ARMO of " + nifStr);
 		//TODO with this in the character no longer animates well
-		//skinFileNames.add(nifStr);
+		skinFileNames.add(nifStr);
 
 		//FIXME: BOD2 looks like the guy https://falloutck.uesp.net/wiki/ArmorAddon
 		//helmetStr = arma.BODT.isHair() ? nifStr : helmetStr;
@@ -298,8 +249,7 @@ public class J3dNPC_ extends J3dRECOTypeCha
 		//System.out.println("ARMO " + nifStr);
 	}
 
-	private void addWEAP(WEAP weap)
-	{
+	private void addWEAP(WEAP weap) {
 		weapStr = weap.MODL.model;
 		//System.out.println("WEAP " + weapStr);
 	}
@@ -312,8 +262,7 @@ public class J3dNPC_ extends J3dRECOTypeCha
 	 * @param textureSource
 	 * @param soundSource
 	 */
-	private void j3dCREA(IRecordStore master, MediaSources mediaSources)
-	{
+	private void j3dCREA(IRecordStore master, MediaSources mediaSources) {
 		String skeletonNifFile = ESConfig.TES_MESH_PATH + race.maleSkeleton;
 
 		ARMO skin = new ARMO(master.getRecord(race.WNAM.formId));
@@ -330,13 +279,32 @@ public class J3dNPC_ extends J3dRECOTypeCha
 		ArrayList<String> idleAnimations = new ArrayList<String>();
 		//idleAnimations.addAll(mediaSources.getMeshSource().getFilesInFolder(assetPath + "\\animations"));
 
+		//can't find animations properly in the AI PACK yet
+		if (assetPath.contains("Alien")) {
+			idleAnimations.add(assetPath + "\\animations\\idle_mt.hkx");
+		} else if (assetPath.contains("Turret")) {
+			idleAnimations.add(assetPath + "\\animations\\mounted\\idle.hkx");
+		} else if (assetPath.contains("PowerArmor")) {
+			idleAnimations.add(assetPath + "\\animations\\mt\\idle.hkx");
+		} else if (assetPath.contains("Cat")) {
+			idleAnimations.add(assetPath + "\\animations\\cat_idle3.hkx");
+		} else if (assetPath.contains("DeathClaw")) {
+			idleAnimations.add(assetPath + "\\animations\\deathclaw_idle.hkx");
+		} else if (assetPath.contains("SuperMutantBehemoth")) {
+			idleAnimations.add(assetPath + "\\animations\\idle.hkx");
+		} else if (assetPath.contains("SuperMutant")) {
+			idleAnimations.add(assetPath + "\\animations\\mt\\neutral\\posea_idle1.hkx");
+		} else {
+			idleAnimations.add(assetPath + "\\animations\\idle.hkx");
+		}
+
 		nifCharacter = new NifCharacter(skeletonNifFile, skinFileNames, mediaSources);
 		nifCharacter.setIdleAnimations(idleAnimations);
 		addChild(nifCharacter);
-		
+
 		setOutline(new Color3f(1.0f, 1.0f, 0f));
 		if (!BethRenderSettings.isOutlineChars())
-			((Fadable) nifCharacter).setOutline(null);
+			((Fadable)nifCharacter).setOutline(null);
 
 	}
 
